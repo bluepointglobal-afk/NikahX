@@ -74,6 +74,18 @@ export default function Home() {
             Go to discovery feed
           </button>
           <button
+            className="w-full rounded-2xl py-3 text-white bg-emerald-600/10 ring-1 ring-emerald-500/20 hover:ring-emerald-400/40 transition"
+            onClick={() => nav('/premium')}
+          >
+            Upgrade to Premium
+          </button>
+          <button
+            className="w-full rounded-2xl py-3 text-slate-200 ring-1 ring-slate-800 hover:ring-slate-700 hover:text-white transition"
+            onClick={() => nav('/account/subscription')}
+          >
+            Subscription settings
+          </button>
+          <button
             className="w-full rounded-2xl py-3 text-slate-200 ring-1 ring-slate-800 hover:ring-slate-700 hover:text-white transition"
             onClick={() => nav('/onboarding/profile')}
           >

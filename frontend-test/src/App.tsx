@@ -9,6 +9,9 @@ import OnboardingProfile from './pages/onboarding/Profile';
 import OnboardingPreferences from './pages/onboarding/Preferences';
 import OnboardingWaliInvite from './pages/onboarding/WaliInvite';
 import OnboardingComplete from './pages/onboarding/Complete';
+import Premium from './pages/Premium';
+import SubscriptionSuccess from './pages/SubscriptionSuccess';
+import Subscription from './pages/Subscription';
 
 function App() {
   return (
@@ -65,6 +68,33 @@ function App() {
             element={
               <ProtectedRoute>
                 <Discovery />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/premium"
+            element={
+              <ProtectedRoute>
+                <Premium />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/subscription/success"
+            element={
+              <ProtectedRoute>
+                <SubscriptionSuccess />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/account/subscription"
+            element={
+              <ProtectedRoute>
+                <Subscription />
               </ProtectedRoute>
             }
           />
