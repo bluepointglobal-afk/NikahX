@@ -68,6 +68,12 @@ export default function Home() {
 
         <div className="mt-6 space-y-3">
           <button
+            className="w-full rounded-2xl py-3 text-white bg-emerald-600/20 ring-1 ring-emerald-500/30 hover:ring-emerald-400/50 transition"
+            onClick={() => nav('/discover')}
+          >
+            Go to discovery feed
+          </button>
+          <button
             className="w-full rounded-2xl py-3 text-slate-200 ring-1 ring-slate-800 hover:ring-slate-700 hover:text-white transition"
             onClick={() => nav('/onboarding/profile')}
           >
@@ -82,8 +88,8 @@ export default function Home() {
         </div>
 
         <p className="mt-6 text-xs text-slate-400 leading-relaxed">
-          Discovery feed is not included in this onboarding prototype. Matching and browsing are intended to be
-          wali-supervised and privacy-first.
+          Matching and browsing are wali-supervised and privacy-first: opposite-gender only, no photos until wali approval
+          and mutual consent.
         </p>
       </div>
     </div>

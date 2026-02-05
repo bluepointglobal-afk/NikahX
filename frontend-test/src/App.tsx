@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './pages/Auth';
 import Home from './pages/Home';
+import Discovery from './pages/Discovery';
 import VerifyEmail from './pages/VerifyEmail';
 import { AuthProvider } from './lib/auth';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -55,6 +56,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/discover"
+            element={
+              <ProtectedRoute>
+                <Discovery />
               </ProtectedRoute>
             }
           />
