@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NikahPlus Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1152d4", // Royal Blue
+              "primary-dark": "#0a3bb0",
+              "accent": "#d4af37", // Gold for premium
+              "background-dark": "#0B0F19", // Deep Navy/Black
+              "surface-dark": "#151C2C", // Slightly lighter Navy
+              "surface-hover": "#1C2538",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.875rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0F19;}
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-display min-h-screen flex flex-col items-center antialiased selection:bg-primary selection:text-white">
+<div class="w-full max-w-md bg-background-dark min-h-screen relative shadow-2xl overflow-hidden border-x border-slate-800/50">
+<div class="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-xl border-b border-slate-800 transition-colors">
+<div class="flex items-center px-4 h-[60px] justify-between">
+<button class="text-slate-300 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-800 hover:text-white transition active:scale-95">
+<span class="material-symbols-outlined font-normal">arrow_back</span>
+</button>
+<h2 class="text-[17px] font-semibold tracking-wide text-white text-center">Settings</h2>
+<div class="size-10"></div> 
+</div>
+</div>
+<div class="p-5 space-y-8 pb-12">
+<div class="flex items-center gap-4 bg-surface-dark p-4 rounded-2xl shadow-lg border border-slate-800/60 ring-1 ring-white/5 relative overflow-hidden group">
+<div class="absolute left-0 top-0 w-24 h-full bg-primary/5 blur-xl"></div>
+<div class="relative z-10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-16 w-16 shadow-xl ring-2 ring-primary/20" data-alt="Portrait of a smiling young man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiR-Jd_rIdg0F7BoX2yO0a5VRHUJC4gAsNSgFa_adsBFUBsZVG_G1_QZChIF2DP4rm8VedOGGJKGSuOjXoyuhGmnryIurohA6uJRtNh0UEEHuzhzNXduX3wE6xtPtn3g1luC1Ai2e6QWadv6eQ5OvY0a-ezZ3VhN7646KjIS6P_QeGVlcXJkOyVJUhToZNroS4wnbs371Pkl_ZhaQ7b9OPsl9_hyolDE4n0KIVNWSOyOJbsEJKcidJOu9T-BSH7L7Zu1UvH4_5PVgr");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 z-10">
+<div class="flex items-center gap-1.5 mb-0.5">
+<p class="text-lg font-bold text-white tracking-tight">Zayd Abdullah</p>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+<p class="text-slate-400 text-xs font-medium tracking-wide">Muslim • 26 • London</p>
+</div>
+<div class="shrink-0 z-10">
+<button class="size-9 flex items-center justify-center rounded-full bg-slate-800 text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<div>
+<div class="flex flex-col rounded-2xl bg-gradient-to-br from-primary-dark to-black p-0 shadow-2xl border border-slate-800 relative overflow-hidden group">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+<div class="absolute top-0 right-0 w-48 h-48 bg-primary rounded-full blur-[80px] opacity-30 -mr-16 -mt-16 animate-pulse"></div>
+<div class="p-5 relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/10 backdrop-blur-md mb-2">
+<span class="material-symbols-outlined text-accent text-[16px]">diamond</span>
+<span class="text-xs font-bold text-accent tracking-wider uppercase">Premium</span>
+</div>
+<h3 class="text-white text-xl font-bold leading-tight">NikahPlus Gold</h3>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/20 tracking-wider">ACTIVE</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<p class="text-xs text-slate-300">Unlimited Swipes &amp; Likes</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<p class="text-xs text-slate-300">Advanced Islamic Filters</p>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-white/10 pt-4">
+<p class="text-[11px] text-slate-400 font-medium">Next billing: Oct 24, 2023</p>
+<button class="px-4 py-1.5 rounded-full bg-white text-primary-dark text-xs font-bold hover:bg-slate-100 transition shadow-lg">
+                        Manage Plan
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-500 mb-3 px-1 uppercase tracking-widest">Privacy &amp; Wali</h3>
+<div class="bg-surface-dark rounded-2xl overflow-hidden border border-slate-800/60 divide-y divide-slate-800/60 shadow-sm">
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-200">Blur Photos</p>
+<p class="text-[11px] text-slate-500">Only reveal to matches</p>
+</div>
+</div>
+<div class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-primary focus:outline-none">
+<span class="pointer-events-none translate-x-4 inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">supervised_user_circle</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-200">Wali Mode</p>
+<p class="text-[11px] text-slate-500">Guardian in chats</p>
+</div>
+</div>
+<div class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-slate-700 focus:outline-none">
+<span class="pointer-events-none translate-x-0 inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<p class="text-sm font-medium text-slate-200">Discovery Settings</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-500 mb-3 px-1 uppercase tracking-widest">Safety &amp; Verification</h3>
+<div class="bg-surface-dark rounded-2xl overflow-hidden border border-slate-800/60 divide-y divide-slate-800/60 shadow-sm">
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<p class="text-sm font-medium text-slate-200">ID Verification</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-green-400 bg-green-900/30 px-2 py-1 rounded border border-green-500/20">VERIFIED</span>
+<span class="material-symbols-outlined text-slate-600 text-[20px]">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-red-500/10 text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</div>
+<p class="text-sm font-medium text-slate-200">Blocked Users</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-[20px]">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-orange-500/10 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<p class="text-sm font-medium text-slate-200">Reporting History</p>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-500 mb-3 px-1 uppercase tracking-widest">Notifications</h3>
+<div class="bg-surface-dark rounded-2xl overflow-hidden border border-slate-800/60 divide-y divide-slate-800/60 shadow-sm">
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-slate-800 text-slate-400 group-hover:bg-slate-700 transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</div>
+<p class="text-sm font-medium text-slate-200">New Matches</p>
+</div>
+<div class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-primary focus:outline-none">
+<span class="pointer-events-none translate-x-4 inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-slate-800 text-slate-400 group-hover:bg-slate-700 transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<p class="text-sm font-medium text-slate-200">Messages</p>
+</div>
+<div class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-primary focus:outline-none">
+<span class="pointer-events-none translate-x-4 inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-hover transition cursor-pointer group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-slate-800 text-slate-400 group-hover:bg-slate-700 transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">mosque</span>
+</div>
+<p class="text-sm font-medium text-slate-200">Prayer Times</p>
+</div>
+<div class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-slate-700 focus:outline-none">
+<span class="pointer-events-none translate-x-0 inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-500 mb-3 px-1 uppercase tracking-widest">Account</h3>
+<div class="bg-surface-dark rounded-2xl overflow-hidden border border-slate-800/60 divide-y divide-slate-800/60 shadow-sm">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-hover transition text-left group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-slate-800 text-slate-400 group-hover:bg-slate-700 transition">
+<span class="material-symbols-outlined text-[20px]">person_off</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-200">Pause Profile</p>
+<p class="text-[11px] text-slate-500">Hide from stack temporarily</p>
+</div>
+</div>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-red-900/20 transition text-left group">
+<div class="flex items-center gap-3.5">
+<div class="p-2 rounded-xl bg-red-500/10 text-red-500 group-hover:bg-red-500 group-hover:text-white transition">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</div>
+<p class="text-sm font-medium text-red-500">Delete Account</p>
+</div>
+</button>
+</div>
+<div class="mt-8 space-y-4">
+<p class="text-[11px] text-slate-500 text-center leading-relaxed max-w-xs mx-auto">
+                Deleting your account is permanent. Data is securely retained for 30 days per our retention policy before complete erasure.
+            </p>
+<div class="flex justify-center gap-4 text-[11px] font-medium">
+<a class="text-primary hover:text-primary-dark hover:underline" href="#">Terms of Service</a>
+<span class="text-slate-700">•</span>
+<a class="text-primary hover:text-primary-dark hover:underline" href="#">Privacy Policy</a>
+</div>
+<p class="text-[10px] text-slate-600 text-center uppercase tracking-widest font-bold">
+                Version 2.4.0 (1042)
+            </p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

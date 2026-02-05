@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NikahPlus - Account Basics</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e62b",
+                        "primary-hover": "#14b822",
+                        "background-light": "#ffffff",
+                        "background-dark": "#050805","surface-light": "#f8f9fa",
+                        "surface-dark": "#0f1410","border-light": "#e2e8f0",
+                        "border-dark": "#1f2920",
+                        "text-main-light": "#0f172a",
+                        "text-main-dark": "#f0fdf2",
+                        "text-sub-light": "#64748b",
+                        "text-sub-dark": "#869088",},
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 30px -4px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 25px rgba(25, 230, 43, 0.15)',
+                        'inner-glow': 'inset 0 0 20px rgba(25, 230, 43, 0.05)',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }input[type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-input {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display transition-colors duration-500 antialiased selection:bg-primary/30 selection:text-primary">
+<div class="relative flex h-full min-h-screen w-full max-w-md mx-auto flex-col overflow-hidden bg-background-light dark:bg-background-dark sm:border-x border-border-light dark:border-border-dark">
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[20%] -right-[20%] w-[70%] h-[50%] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute top-[30%] -left-[20%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[80px]"></div>
+</div>
+<header class="relative flex items-center justify-between px-6 pt-8 pb-4 z-10">
+<button class="group flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-main-light dark:text-text-main-dark transition-all duration-300 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-glow active:scale-95">
+<span class="material-symbols-outlined transition-transform group-hover:-translate-x-0.5 text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-end gap-2">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary">Step 1 of 4</span>
+<div class="flex items-center gap-1.5">
+<div class="h-1 w-8 rounded-full bg-primary shadow-[0_0_10px_rgba(25,230,43,0.5)]"></div>
+<div class="h-1 w-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors duration-300"></div>
+<div class="h-1 w-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors duration-300"></div>
+<div class="h-1 w-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors duration-300"></div>
+</div>
+</div>
+</header>
+<main class="relative flex-1 flex flex-col px-6 pt-4 pb-32 overflow-y-auto no-scrollbar z-10">
+<div class="mb-8 animate-fade-in-up">
+<h1 class="text-text-main-light dark:text-text-main-dark text-[32px] font-bold leading-[1.15] mb-3 tracking-tight">
+                Tell us about <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">yourself</span>
+</h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm font-normal leading-relaxed">
+                We need a few details to verify your identity and ensure a safe, halal community environment.
+            </p>
+</div>
+<form class="flex flex-col gap-6 animate-fade-in-up" onsubmit="event.preventDefault();" style="animation-delay: 100ms;">
+<div class="group">
+<label class="block text-xs font-semibold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within:text-primary">Full Name</label>
+<div class="relative flex items-center">
+<input class="glass-input peer w-full rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark/60 py-4 pl-5 pr-12 text-base font-medium text-text-main-light dark:text-text-main-dark shadow-sm focus:border-primary dark:focus:border-primary focus:ring-1 focus:ring-primary focus:shadow-glow transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="e.g. Zayd Ali" type="text"/>
+<span class="material-symbols-outlined absolute right-4 text-gray-400 dark:text-gray-600 peer-focus:text-primary transition-colors duration-300 pointer-events-none">person</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="block text-xs font-semibold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider ml-1">Gender</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="gender" type="radio"/>
+<div class="relative h-32 flex flex-col items-center justify-center gap-2 rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark/60 p-4 transition-all duration-300 hover:border-primary/30 dark:hover:bg-surface-dark peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:shadow-glow">
+<div class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity duration-300 transform scale-75 peer-checked:scale-100">
+<span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="rounded-full bg-white dark:bg-white/5 p-3 text-gray-400 dark:text-gray-500 group-hover:scale-110 peer-checked:bg-primary peer-checked:text-background-dark peer-checked:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-[28px]">man</span>
+</div>
+<span class="font-medium text-text-main-light dark:text-text-main-dark peer-checked:text-primary">Brother</span>
+</div>
+</label>
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="gender" type="radio"/>
+<div class="relative h-32 flex flex-col items-center justify-center gap-2 rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark/60 p-4 transition-all duration-300 hover:border-primary/30 dark:hover:bg-surface-dark peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:shadow-glow">
+<div class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity duration-300 transform scale-75 peer-checked:scale-100">
+<span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="rounded-full bg-white dark:bg-white/5 p-3 text-gray-400 dark:text-gray-500 group-hover:scale-110 peer-checked:bg-primary peer-checked:text-background-dark peer-checked:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-[28px]">woman</span>
+</div>
+<span class="font-medium text-text-main-light dark:text-text-main-dark peer-checked:text-primary">Sister</span>
+</div>
+</label>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-semibold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within:text-primary">Date of Birth</label>
+<div class="relative flex items-center">
+<input class="glass-input peer w-full rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark/60 py-4 pl-5 pr-12 text-base font-medium text-text-main-light dark:text-text-main-dark shadow-sm focus:border-primary dark:focus:border-primary focus:ring-1 focus:ring-primary focus:shadow-glow transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-gray-600 appearance-none min-h-[58px]" placeholder="DD / MM / YYYY" type="date"/>
+<span class="material-symbols-outlined absolute right-4 text-gray-400 dark:text-gray-600 peer-focus:text-primary transition-colors duration-300 pointer-events-none">calendar_today</span>
+</div>
+<div class="flex gap-2 items-center mt-3 ml-1 px-3 py-2 rounded-lg bg-surface-light dark:bg-surface-dark/40 border border-transparent dark:border-border-dark/50">
+<span class="material-symbols-outlined text-primary shrink-0 text-[16px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<p class="text-[11px] font-medium text-text-sub-light dark:text-text-sub-dark/90 leading-tight">
+                        Only your age will be publicly visible. Your exact birthdate remains private.
+                    </p>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-semibold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within:text-primary">Location</label>
+<div class="relative flex items-center">
+<input class="glass-input peer w-full rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark/60 py-4 pl-5 pr-14 text-base font-medium text-text-main-light dark:text-text-main-dark shadow-sm focus:border-primary dark:focus:border-primary focus:ring-1 focus:ring-primary focus:shadow-glow transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="City, Country" type="text"/>
+<button class="absolute right-2 p-2 text-gray-400 hover:text-primary hover:bg-primary/10 rounded-xl transition-all duration-300" title="Detect Location" type="button">
+<span class="material-symbols-outlined block text-[22px]">my_location</span>
+</button>
+</div>
+</div>
+</form>
+</main>
+<div class="absolute bottom-0 left-0 right-0 z-20 w-full pointer-events-none">
+<div class="h-24 w-full bg-gradient-to-b from-transparent to-background-light dark:to-background-dark"></div>
+<div class="bg-background-light dark:bg-background-dark px-6 pb-8 pt-2 pointer-events-auto">
+<button class="group w-full relative overflow-hidden rounded-2xl bg-text-main-light dark:bg-white p-[1px] shadow-lg active:scale-[0.99] transition-all duration-300">
+<div class="relative flex items-center justify-between bg-text-main-light dark:bg-white px-6 py-4 rounded-2xl transition-all group-hover:bg-opacity-90 dark:group-hover:bg-gray-100">
+<span class="text-white dark:text-black text-lg font-bold tracking-wide">Continue</span>
+<div class="size-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_10px_rgba(25,230,43,0.4)] group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-background-dark font-bold text-[20px]">arrow_forward</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+
+</body></html>

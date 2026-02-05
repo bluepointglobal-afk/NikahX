@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>NikahPlus - Refine Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e62b", 
+                        "primary-hover": "#16cc26",
+                        "primary-dark": "#15c225",
+                        "surface": "#ffffff",
+                        "surface-dark": "#18181b", // zinc-900
+                        "card-dark": "#121214", // Slightly darker than surface for cards
+                        "background-light": "#f2f4f6", 
+                        "background-dark": "#000000", // True black for OLED premium feel
+                        "subtle-border": "rgba(255,255,255,0.08)"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(25, 230, 43, 0.15)',
+                        'glow-intense': '0 0 15px rgba(25, 230, 43, 0.4)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none
+        }
+        .custom-checkbox {
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid #3f3f46;border-radius: 6px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #19e62b;
+            border-color: #19e62b;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+            -webkit-tap-highlight-color: transparent;
+        }input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased pb-32">
+<div class="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/5 transition-all duration-300">
+<div class="flex items-center justify-between px-4 h-14 max-w-md mx-auto">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-base font-semibold text-gray-900 dark:text-white tracking-wide">Refine Search</h1>
+<button class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+                Reset
+            </button>
+</div>
+</div>
+<main class="px-4 pt-6 space-y-8 max-w-md mx-auto w-full">
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">Basics</h2>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft p-5 border border-gray-100 dark:border-subtle-border">
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<div class="p-1.5 rounded-lg bg-gray-50 dark:bg-white/5">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-400 text-[18px]">cake</span>
+</div>
+<span class="font-medium text-sm text-gray-600 dark:text-gray-400">Age Range</span>
+</div>
+<p class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">22 <span class="text-gray-300 dark:text-gray-600 mx-1">-</span> 35</p>
+</div>
+<label class="flex items-center gap-2.5 cursor-pointer group select-none py-1 pl-2">
+<span class="text-xs font-medium text-gray-400 group-hover:text-primary transition-colors">Dealbreaker</span>
+<input checked="" class="custom-checkbox w-5 h-5" type="checkbox"/>
+</label>
+</div>
+<div class="relative h-10 w-full select-none touch-none px-2">
+<div class="absolute top-1/2 left-0 right-0 h-1 mt-[-2px] rounded-full bg-gray-100 dark:bg-zinc-800"></div>
+<div class="absolute top-1/2 left-[15%] right-[25%] h-1 mt-[-2px] rounded-full bg-primary shadow-glow"></div>
+<div class="absolute top-1/2 left-[15%] -ml-4 -mt-4 w-8 h-8 bg-white dark:bg-zinc-900 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 flex items-center justify-center cursor-grab active:scale-110 active:cursor-grabbing transition-transform z-10">
+<div class="w-2.5 h-2.5 rounded-full bg-primary shadow-glow-intense"></div>
+</div>
+<div class="absolute top-1/2 right-[25%] -mr-4 -mt-4 w-8 h-8 bg-white dark:bg-zinc-900 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 flex items-center justify-center cursor-grab active:scale-110 active:cursor-grabbing transition-transform z-10">
+<div class="w-2.5 h-2.5 rounded-full bg-primary shadow-glow-intense"></div>
+</div>
+<div class="absolute -bottom-6 left-0 text-xs font-medium text-gray-400">18</div>
+<div class="absolute -bottom-6 right-0 text-xs font-medium text-gray-400">60+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft p-1 border border-gray-100 dark:border-subtle-border overflow-hidden group">
+<div class="p-5 pb-4">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-gray-50 dark:bg-white/5">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-400 text-[18px]">location_on</span>
+</div>
+<span class="font-medium text-sm text-gray-600 dark:text-gray-400">Max Distance</span>
+</div>
+<span class="text-sm font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 px-3 py-1 rounded-full shadow-sm">50 mi</span>
+</div>
+<div class="relative h-6 w-full mb-2 select-none touch-none px-1">
+<div class="absolute top-1/2 left-0 right-0 h-1 mt-[-2px] rounded-full bg-gray-100 dark:bg-zinc-800"></div>
+<div class="absolute top-1/2 left-0 w-[45%] h-1 mt-[-2px] rounded-full bg-primary shadow-glow"></div>
+<div class="absolute top-1/2 left-[45%] -ml-4 -mt-4 w-8 h-8 bg-white dark:bg-zinc-900 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 flex items-center justify-center cursor-grab hover:scale-110 transition-transform z-10">
+<span class="material-symbols-outlined text-[16px] text-primary">drag_indicator</span>
+</div>
+</div>
+</div>
+<div class="relative w-full h-32 bg-gray-100 dark:bg-zinc-900 rounded-b-[20px] overflow-hidden">
+<img alt="Map Location" class="w-full h-full object-cover opacity-60 dark:opacity-40 group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[100%] contrast-125 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Z-AXymW3tI9jlT-nuVJ4lnzwHOZQ8FP_i48E2lScxoan_g_qShTvz355D4906FOS0Dj_w5_3CAZcty2K-u6zU0PVF-w9ecI0YxHPJKwagMlU9wJaNp6lG4K7ymiMuqXRIuD0h2drVvm1Xs30fCN39dSPeQnIJDiGn5M8qa7lYOxqUX0PwohVIsbE7t9fh09XYtssykcju7zNcZ5w4bkOyR-8iqs5osvcxRwrq0sdGpT-QP9f3IZ1earjPJTSiyLZ5nVFR8o9vsmm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+<div class="bg-white/95 dark:bg-zinc-900/80 backdrop-blur-md px-3 py-2 rounded-xl shadow-lg border border-white/20 dark:border-white/10 w-full flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<div>
+<div class="text-[10px] uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400 leading-none mb-0.5">Center Point</div>
+<div class="text-xs font-semibold text-gray-900 dark:text-white">Current Location</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[18px]">my_location</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">Background</h2>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft border border-gray-100 dark:border-subtle-border divide-y divide-gray-50 dark:divide-white/5 overflow-hidden">
+<button class="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-left group">
+<div>
+<p class="font-medium text-gray-900 dark:text-white text-base">Nationality &amp; Ethnicity</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">Open to all</p>
+</div>
+<div class="flex items-center gap-2 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+<span class="text-sm font-medium">Any</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-left group">
+<div>
+<p class="font-medium text-gray-900 dark:text-white text-base">Education</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">Minimum degree required</p>
+</div>
+<div class="flex items-center gap-2 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Bachelors</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</button>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft p-5 border border-gray-100 dark:border-subtle-border">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">translate</span>
+<p class="font-medium text-gray-900 dark:text-white">Languages</p>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="px-4 py-2 rounded-xl bg-primary/10 border border-primary/20 text-green-700 dark:text-primary text-sm font-semibold transition-all hover:bg-primary/20 hover:scale-105 active:scale-95 shadow-sm shadow-primary/5">English</button>
+<button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-100 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">Arabic</button>
+<button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-100 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">Urdu</button>
+<button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-100 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">French</button>
+<button class="w-9 h-9 rounded-xl bg-gray-50 dark:bg-zinc-800/30 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</section>
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">Deen &amp; Lifestyle</h2>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft p-5 border border-gray-100 dark:border-subtle-border">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">mosque</span>
+<p class="font-medium text-gray-900 dark:text-white">Sect</p>
+</div>
+<label class="flex items-center gap-2.5 cursor-pointer group select-none">
+<span class="text-xs font-medium text-gray-400 group-hover:text-primary transition-colors">Dealbreaker</span>
+<input checked="" class="custom-checkbox w-5 h-5" type="checkbox"/>
+</label>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="px-2 py-3 rounded-xl bg-primary text-black text-sm font-bold shadow-glow-intense text-center transition-transform active:scale-95">Sunni</button>
+<button class="px-2 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-100 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium text-center hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">Shia</button>
+<button class="px-2 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-100 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium text-center hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">Just Muslim</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft border border-gray-100 dark:border-subtle-border overflow-hidden">
+<div class="p-4 px-5 bg-gray-50/50 dark:bg-white/[0.02] border-b border-gray-100 dark:border-white/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">schedule</span>
+<p class="font-medium text-gray-900 dark:text-white">Prayer Frequency</p>
+</div>
+<div class="divide-y divide-gray-50 dark:divide-white/5">
+<label class="flex items-center justify-between p-4 px-5 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors select-none group">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Always Prays</span>
+<input checked="" class="custom-checkbox w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 px-5 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors select-none group">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Usually Prays</span>
+<input checked="" class="custom-checkbox w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 px-5 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors select-none group">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Sometimes Prays</span>
+<input class="custom-checkbox w-5 h-5" type="checkbox"/>
+</label>
+</div>
+</div>
+</section>
+<section class="space-y-3 pb-24">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">Future &amp; Lifestyle</h2>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft p-5 border border-gray-100 dark:border-subtle-border">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">history_edu</span>
+<p class="font-medium text-gray-900 dark:text-white">Marital History</p>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-200 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium hover:border-primary/50 hover:text-primary transition-all">Never Married</button>
+<button class="px-4 py-2 rounded-xl bg-primary/10 border border-primary text-green-700 dark:text-primary text-sm font-bold shadow-sm shadow-primary/5">Divorced</button>
+<button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-200 dark:border-white/5 text-gray-600 dark:text-gray-300 text-sm font-medium hover:border-primary/50 hover:text-primary transition-all">Widowed</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-3xl shadow-soft border border-gray-100 dark:border-subtle-border divide-y divide-gray-50 dark:divide-white/5 overflow-hidden">
+<div class="flex items-center justify-between p-5">
+<div class="flex flex-col gap-1">
+<span class="font-medium text-gray-900 dark:text-white">Has Children</span>
+<span class="text-xs text-gray-500 dark:text-gray-500">Open to matches with kids</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-12 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-zinc-700/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-5">
+<div class="flex flex-col gap-1">
+<span class="font-medium text-gray-900 dark:text-white">Willing to Relocate</span>
+<span class="text-xs text-gray-500 dark:text-gray-500">Open to moving abroad</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-12 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-zinc-700/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+<button class="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-left group">
+<div>
+<span class="font-medium text-gray-900 dark:text-white block">Marriage Timeline</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-white/10 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-white/5">1-2 years</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">expand_more</span>
+</div>
+</button>
+</div>
+</section>
+</main>
+<div class="fixed bottom-0 left-0 w-full z-40 p-4 bg-gradient-to-t from-background-light via-background-light/95 to-transparent dark:from-background-dark dark:via-background-dark/95 pointer-events-none pb-8 pt-8">
+<div class="max-w-md mx-auto w-full pointer-events-auto">
+<button class="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-black font-bold py-4 rounded-2xl shadow-[0_0_30px_rgba(25,230,43,0.3)] active:scale-[0.98] transition-all border border-white/20 relative overflow-hidden group">
+<span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
+<span class="text-lg">Show 34 Matches</span>
+</button>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mahr Estimator - NikahPlus</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d4af37","primary-hover": "#b8962e",
+                        "primary-light": "#f3e5ab",
+                        "background-dark": "#0f0f0f","surface-dark": "#18181b","surface-highlight": "#27272a","text-muted": "#a1a1aa","border-dark": "#27272a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-display antialiased selection:bg-primary selection:text-black min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center justify-between px-4 h-16 max-w-lg mx-auto w-full">
+<button class="p-2 -ml-2 rounded-full hover:bg-white/5 transition-colors text-white">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-base font-semibold tracking-wide text-white">Mahr Estimator</h1>
+<button class="p-2 -mr-2 rounded-full hover:bg-white/5 transition-colors text-white">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full max-w-lg mx-auto px-4 py-6">
+<section class="mb-8">
+<h2 class="text-2xl font-bold leading-tight mb-2 text-white">Understand Customary Expectations</h2>
+<p class="text-text-muted text-sm leading-relaxed">
+                Input your details to see a suggested Mahr range based on location, cultural norms, and financial standing.
+            </p>
+</section>
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<div class="space-y-3">
+<label class="block text-xs font-medium uppercase tracking-wider text-text-muted">Residency Location</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors">location_on</span>
+</div>
+<select class="block w-full pl-11 pr-10 py-4 bg-surface-dark border border-border-dark rounded-xl text-sm focus:ring-1 focus:ring-primary focus:border-primary text-white placeholder-gray-500 shadow-sm appearance-none cursor-pointer transition-all hover:border-gray-600">
+<option disabled="" selected="" value="">Select City or Country</option>
+<option value="us">United States</option>
+<option value="uk">United Kingdom</option>
+<option value="ca">Canada</option>
+<option value="ae">United Arab Emirates</option>
+<option value="my">Malaysia</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-500 text-xl">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-xs font-medium uppercase tracking-wider text-text-muted">Cultural Heritage</label>
+<div class="flex flex-wrap gap-2.5">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="culture" type="radio" value="south_asian"/>
+<div class="px-5 py-2.5 rounded-full bg-surface-dark border border-border-dark text-sm font-medium text-gray-300 transition-all peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary hover:bg-surface-highlight hover:border-gray-600 flex items-center gap-2 shadow-sm">
+<span>South Asian</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="culture" type="radio" value="arab"/>
+<div class="px-5 py-2.5 rounded-full bg-surface-dark border border-border-dark text-sm font-medium text-gray-300 transition-all peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary hover:bg-surface-highlight hover:border-gray-600 flex items-center gap-2 shadow-sm">
+<span>Arab</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="culture" type="radio" value="western"/>
+<div class="px-5 py-2.5 rounded-full bg-surface-dark border border-border-dark text-sm font-medium text-gray-300 transition-all peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary hover:bg-surface-highlight hover:border-gray-600 flex items-center gap-2 shadow-sm">
+<span>Western</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="culture" type="radio" value="se_asian"/>
+<div class="px-5 py-2.5 rounded-full bg-surface-dark border border-border-dark text-sm font-medium text-gray-300 transition-all peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary hover:bg-surface-highlight hover:border-gray-600 flex items-center gap-2 shadow-sm">
+<span>Southeast Asian</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="culture" type="radio" value="other"/>
+<div class="px-5 py-2.5 rounded-full bg-surface-dark border border-border-dark text-sm font-medium text-gray-300 transition-all peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary hover:bg-surface-highlight hover:border-gray-600 flex items-center gap-2 shadow-sm">
+<span>Other / Mixed</span>
+</div>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="block text-xs font-medium uppercase tracking-wider text-text-muted">Financial Standing</label>
+<button class="text-xs text-primary hover:text-primary-light font-medium hover:underline transition-colors">Why ask this?</button>
+</div>
+<div class="grid grid-cols-3 gap-1 p-1 bg-surface-dark rounded-xl border border-border-dark">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="tier" type="radio" value="student"/>
+<div class="w-full py-3 rounded-lg text-center text-xs sm:text-sm font-medium text-gray-400 transition-all peer-checked:bg-surface-highlight peer-checked:text-white peer-checked:shadow-sm hover:text-white">
+                            Student
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="tier" type="radio" value="professional"/>
+<div class="w-full py-3 rounded-lg text-center text-xs sm:text-sm font-medium text-gray-400 transition-all peer-checked:bg-surface-highlight peer-checked:text-white peer-checked:shadow-sm hover:text-white">
+                            Professional
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="tier" type="radio" value="established"/>
+<div class="w-full py-3 rounded-lg text-center text-xs sm:text-sm font-medium text-gray-400 transition-all peer-checked:bg-surface-highlight peer-checked:text-white peer-checked:shadow-sm hover:text-white">
+                            Established
+                        </div>
+</label>
+</div>
+</div>
+<div class="pt-6">
+<button class="w-full group relative flex items-center justify-center gap-2 bg-white text-black font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:bg-gray-100 hover:scale-[1.01] active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px] text-gray-800">calculate</span>
+                    Calculate Estimate
+                </button>
+</div>
+</form>
+<section class="mt-12 border-t border-white/5 pt-8">
+<div class="flex items-center justify-between mb-5 px-1">
+<h3 class="text-base font-semibold text-white">Etiquette &amp; Tips</h3>
+<span class="text-xs font-medium text-primary cursor-pointer hover:text-primary-light">View all</span>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 snap-x">
+<div class="snap-center shrink-0 w-64 h-40 rounded-2xl relative overflow-hidden group cursor-pointer border border-white/10 shadow-2xl">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70" data-alt="Abstract geometric islamic pattern in deep blue" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBehP1w3gASP8zgjZPScJQMZtpTHHhq25CP-i4X0y5-sbJGmQshIySrgCMZKc6BTKbz6htq7xl6KlY7oTXtaNwNdo3CvSGMt7F0GQGCuVYMG1r1hRrvNS91JsvNHB94GR9ir3DKWWRlUG4SLbT1fw_ry7eUHtGOHVZlvDvTU0qW54piwFz1jdRJAzjboGkZH8lcxbeZwpJ9xb2L2XY220AJ5gJESJLNaY0uSAG8IR16aIkIkjP_GHmAJ8Ypqu0PqoRCm8iem22roNtW');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-sm text-primary">verified_user</span>
+<span class="text-[10px] uppercase font-bold tracking-wider text-primary">Sunnah</span>
+</div>
+<h4 class="text-white font-medium text-sm leading-tight group-hover:underline decoration-primary decoration-1 underline-offset-4">The Best Mahr is the Easiest</h4>
+</div>
+</div>
+<div class="snap-center shrink-0 w-64 h-40 rounded-2xl relative overflow-hidden group cursor-pointer border border-white/10 shadow-2xl">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70" data-alt="Soft focused image of people discussing respectfully" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdbsDmRYFKVnwkEi-ilz60LECR1nKblvIewIhgCwTqquXCmJEAPZKcfMixikw6Qlq3rhY4mXfkyFpbsv7A1o3VLng1pDWmr9JLIapxQYeOnIGraO4p6RBlWhXEO4txnWhSmeVMtOpaWY3c4jkXPum0NZ08rKLPemc58GzPKIP_HtB0FPUu1iCbbvC7AxPRIueuoFyPH2yWcjR0956c-DG3JrsZAiWKLH8WM4c0TG3uhIIUsI-9aYPRXueOFua-XdGj8XXZCZMV3HGM');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-sm text-green-400">handshake</span>
+<span class="text-[10px] uppercase font-bold tracking-wider text-green-400">Advice</span>
+</div>
+<h4 class="text-white font-medium text-sm leading-tight group-hover:underline decoration-green-400 decoration-1 underline-offset-4">Involving Family in Negotiation</h4>
+</div>
+</div>
+<div class="snap-center shrink-0 w-64 h-40 rounded-2xl relative overflow-hidden group cursor-pointer border border-dashed border-white/20 hover:border-white/40 transition-colors bg-surface-dark">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center p-4">
+<span class="material-symbols-outlined text-gray-500 text-3xl mb-3">menu_book</span>
+<p class="text-xs text-gray-400 font-medium group-hover:text-white transition-colors">Browse complete etiquette guide</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="mt-6 pt-6 border-t border-white/5 pb-24">
+<div class="flex gap-4 p-4 rounded-xl bg-surface-dark/50 border border-white/5">
+<span class="material-symbols-outlined text-text-muted shrink-0 text-xl mt-0.5">info</span>
+<div class="space-y-1">
+<strong class="text-gray-300 text-xs uppercase tracking-wide block">Not Legal or Religious Advice</strong>
+<p class="text-xs text-text-muted leading-relaxed">
+                        The estimated range is based on aggregated community data and general cultural norms. Mahr is a personal gift and can be any amount agreed upon by both parties. NikahPlus does not enforce these values.
+                    </p>
+</div>
+</div>
+</footer>
+</main>
+<div class="fixed bottom-0 w-full bg-background-dark/80 backdrop-blur-xl border-t border-white/10 h-20 px-6 hidden sm:flex items-center justify-around z-40 max-w-lg left-1/2 -translate-x-1/2">
+<div class="flex flex-col items-center gap-1.5 text-gray-500 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[26px]">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 text-white cursor-pointer relative">
+<div class="absolute -top-10 bg-primary rounded-full p-3 shadow-[0_0_15px_rgba(212,175,55,0.3)] border-4 border-background-dark">
+<span class="material-symbols-outlined text-black fill-current text-[24px]">calculate</span>
+</div>
+<span class="text-[10px] font-medium mt-6 text-primary">Estimator</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 text-gray-500 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</div>
+
+</body></html>

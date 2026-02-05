@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wali Dashboard - NikahPlus</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#3b82f6", // Updated to a slightly lighter blue for better contrast on dark
+                    "primary-dark": "#1d4ed8",
+                    "background-dark": "#0f172a", // Deep slate
+                    "card-dark": "#1e293b", // Lighter slate for cards
+                    "accent": "#f59e0b", // Gold for verified/premium touches
+                },
+                fontFamily: {
+                    "display": ["Inter", "sans-serif"]
+                },
+                boxShadow: {
+                    'glow': '0 0 20px -5px rgba(59, 130, 246, 0.3)',
+                }
+            },
+        },
+    }
+</script>
+<style>.scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    body {
+        -webkit-tap-highlight-color: transparent;
+    }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-display antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl overflow-hidden bg-background-dark border-x border-slate-800">
+<div class="flex items-center bg-background-dark/80 px-4 py-3 justify-between sticky top-0 z-30 backdrop-blur-md border-b border-slate-800/50">
+<button class="text-slate-300 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h2 class="text-white text-base font-semibold tracking-wide flex-1 text-center">Guardian Dashboard</h2>
+<button class="text-slate-300 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide pb-24">
+<div class="px-4 py-4 w-full">
+<div class="flex w-full items-center gap-4 bg-gradient-to-br from-card-dark to-[#0f172a] p-5 rounded-2xl shadow-lg border border-slate-700/50 relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-16 w-16 border-2 border-primary shadow-glow ring-2 ring-background-dark" data-alt="Portrait of Sara Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtIic53LPO2LgonvcLVdCSvwUSrz0cfPrMcOLWW2DdUr3A789GYuiIoXbRlpC6z6CKSrZZs573vP14aqXaMMU_Uss-MaGkr5d8kC4vdCRd2BUFzEf7H0HKE92sBndWPpJXUQxCf782qjPfEJHygHJpM6utyJxbICyhctg2-SYyDi4osMPgVF0lKg-_Juv5DeyoRBYn7SLcHWqW_7E1nybNsoZ3wzkd7Ae4t9p9vHYW4b6USD8jZ43_B2aerjjP11wZxA3UWJo7qulk");'></div>
+<div class="absolute -bottom-1 -right-1 bg-emerald-500 rounded-full p-0.5 border-2 border-card-dark shadow-sm">
+<span class="material-symbols-outlined text-white text-[14px] font-bold block">check</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 z-10">
+<div class="flex items-center justify-between">
+<p class="text-primary text-[10px] font-bold uppercase tracking-widest mb-1">Assisting</p>
+<span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] text-slate-300 backdrop-blur-sm">Wali Mode</span>
+</div>
+<p class="text-white text-xl font-bold leading-tight tracking-tight">Sara Ahmed</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-emerald-400 text-[16px]">shield_person</span>
+<p class="text-slate-300 text-xs font-medium">Verified Guardian</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 sticky top-[65px] z-20 bg-background-dark/95 backdrop-blur-xl pb-2 pt-1">
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-card-dark p-1 border border-slate-800">
+<button class="relative flex h-full flex-1 items-center justify-center rounded-[0.25rem] bg-primary shadow-sm text-white text-xs font-semibold leading-normal transition-all duration-200">
+                    Pending (3)
+                </button>
+<button class="relative flex h-full flex-1 items-center justify-center rounded-[0.25rem] text-slate-400 hover:text-white text-xs font-medium leading-normal transition-all duration-200 hover:bg-white/5">
+                    Approved
+                </button>
+<button class="relative flex h-full flex-1 items-center justify-center rounded-[0.25rem] text-slate-400 hover:text-white text-xs font-medium leading-normal transition-all duration-200 hover:bg-white/5">
+                    Chats
+                    <span class="ml-1.5 flex h-1.5 w-1.5">
+<span class="animate-ping absolute inline-flex h-1.5 w-1.5 rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
+</span>
+</button>
+</div>
+</div>
+<div class="px-4 mt-6 mb-3 flex justify-between items-end">
+<h3 class="text-white text-lg font-bold leading-tight">Review Requests</h3>
+<button class="text-xs text-primary hover:text-primary-dark font-medium transition-colors">View All</button>
+</div>
+<p class="px-4 text-xs text-slate-400 mb-4 leading-relaxed">
+            Sara has forwarded these profiles for your approval. Please review them carefully according to family values.
+        </p>
+<div class="px-4 mb-4">
+<div class="flex flex-col gap-3 rounded-2xl bg-card-dark p-4 shadow-lg border border-slate-800 relative overflow-hidden">
+<div class="absolute top-0 right-0 rounded-bl-xl bg-primary/20 px-3 py-1.5 border-b border-l border-slate-700/50">
+<p class="text-[10px] font-bold text-primary uppercase tracking-wider">New Match</p>
+</div>
+<div class="flex gap-4 pt-2">
+<div class="w-20 h-24 shrink-0 bg-center bg-no-repeat bg-cover rounded-xl shadow-inner border border-slate-700" data-alt="Portrait of Omar Farooq" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9gkRN-MZZHdh3Xb60kuUI1Y4bJv3ynZ9N5rVFfcc-qu-1hOhSCAuRhO8_cg91GrP0ye8_PMuo94M-oqwMZAa1tDEJcybO9FerYc1HjHWKBpeWzEB2dfYqoFXWYj05oFCPfF2Sr_tqwwohuu0dLQSU0biAdDM5G36fdN8yDFXiAEPdGLm4cXo1S_1WF558okfT6p_tEyeV99FgJqPiMYrDu6TpAH8dDlZPWI_I8Ks7HUAF1tsblHgL3WsRcx0bFpbHfAdIiVZzIJrU");'></div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<div class="flex items-center gap-2 mb-0.5">
+<h4 class="text-white text-lg font-bold truncate">Omar Farooq, 29</h4>
+<span class="material-symbols-outlined text-blue-400 text-[16px]" title="ID Verified">verified</span>
+</div>
+<p class="text-slate-400 text-sm font-medium truncate mb-2">Software Engineer</p>
+<div class="flex items-center gap-1 text-slate-500 text-xs mb-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<p class="truncate">London, UK</p>
+</div>
+<div class="flex items-center gap-1 text-slate-500 text-xs">
+<span class="material-symbols-outlined text-[14px]">school</span>
+<p class="truncate">Masters Degree</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="h-10 flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-transparent text-slate-300 hover:bg-red-500/10 hover:border-red-500/50 hover:text-red-400 text-sm font-semibold transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                        Decline
+                    </button>
+<button class="h-10 flex items-center justify-center gap-2 rounded-lg bg-white text-slate-900 hover:bg-slate-100 text-sm font-bold shadow-md transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                        Approve
+                    </button>
+</div>
+</div>
+</div>
+<div class="px-4 mb-4">
+<div class="flex flex-col gap-3 rounded-2xl bg-card-dark p-4 shadow-lg border border-slate-800 relative overflow-hidden group">
+<div class="flex gap-4">
+<div class="relative w-20 h-24 shrink-0 overflow-hidden rounded-xl border border-slate-700">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover blur-md opacity-60 scale-110" data-alt="Blurred privacy placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9W3Tv2rz1T5AhIaLNuzA3_NS09LsJ3yCFgkG10cn2Dd0O5QuQ3BclYAkjO4LaVuFt-w5uMz8Nkt18rh3phTlZQuB3xhzGpzi0MkyTEHF8lsfo_dRpPSPgC23DT0OanIpFyrvbriaZuw15MIOqiufqeKJsBnEMzl_0MWeKiiUqYkd7Ci2xjBTyktkbUgK2kCMSxSdkyNiJUlvcmdQ8lrsIS8ax7jEMIowYU-bgRYwPrBPoFemkHkH4MuRjZQI1jrAV8EVwYqQbCbwH");'></div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/40">
+<span class="material-symbols-outlined text-white/80">lock</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 py-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-white text-lg font-bold truncate">Bilal K., 31</h4>
+<p class="text-slate-400 text-sm truncate">Architect</p>
+</div>
+</div>
+<div class="flex items-center gap-1 mt-2 text-slate-500">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<p class="text-xs truncate">Manchester, UK</p>
+</div>
+<div class="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wide bg-amber-500/10 text-amber-500 w-fit border border-amber-500/20">
+<span class="material-symbols-outlined text-[12px]">visibility_off</span>
+                            Private Photos
+                        </div>
+</div>
+</div>
+<div class="mt-2">
+<button class="w-full h-10 flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-card-dark hover:bg-slate-800 text-slate-200 text-sm font-semibold transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">article</span>
+                        Review Profile Details
+                    </button>
+</div>
+</div>
+</div>
+<div class="px-4 mt-8 mb-3 flex items-center gap-2">
+<h3 class="text-white text-lg font-bold leading-tight">Active Conversations</h3>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">2 New</span>
+</div>
+<div class="px-4 mb-4">
+<div class="rounded-2xl bg-card-dark shadow-lg border border-slate-800 divide-y divide-slate-800 overflow-hidden">
+<div class="p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="relative">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full ring-2 ring-slate-800 group-hover:ring-primary transition-all" data-alt="Profile of Ahmed Z." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-re0l7Ati_Iql9X1mUMt_w6QG2dQYVneVEQbv-dLe4wunxn2i8v96_Ij4qDfYXcweVJ8aNgcrQc7Z55LLEax78tZFWpjw5-Lk8116_dTWMl_OHADJoAOQzGJGdpIhRWl1mL5TAOxg1at7E_98nfVAsxcqA46xleytM_VdNAVxKFve8spzGTw8JjIwG1xE8wPSdTecyuiXQuJ8Z6TArQhOB55J1VPt6iSwq8L3zWih0YP_vm3mwrS__cch67em680-v2dmkj1R9c2x");'></div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-card-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-white font-bold text-sm group-hover:text-primary transition-colors">Ahmed Z. <span class="text-slate-500 font-normal">&amp; Sara</span></h4>
+<span class="text-[10px] text-slate-400">2m ago</span>
+</div>
+<p class="text-slate-400 text-xs truncate group-hover:text-slate-300">Ahmed: Insha'Allah that works for me too.</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-glow"></div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="relative grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+<div class="w-12 h-12 bg-center bg-no-repeat bg-cover rounded-full ring-2 ring-slate-800" data-alt="Profile of Karim J." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkiJAIul8f_hz1b27a_GCWbdi-bU2QF-inS3TkYxwEOdywo1qqhXRSxSntjFapzmULPWpGxp41xiudpvFi9TTShIKE5fIbvAM0QfB1cdOFi4qZy--LDlPg5CaLjTMvHbvJkLp82HJjxsLdR4mZzEzXs9wWPD1PbW_W6xioSz8BEBA3HC72r0jBStXGKJDBCca0HjbnEAHM-cmVSoniBDY4hK13XCiE7TbNPLu_Jrz07F_PoETYeX5vC0lI4rYL2tBya_O5dHxAFyhj");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-slate-300 font-semibold text-sm">Karim J. <span class="text-slate-600 font-normal">&amp; Sara</span></h4>
+<span class="text-[10px] text-slate-500">1d ago</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-slate-500">pause_circle</span>
+<p class="text-slate-500 text-xs truncate">Conversation paused</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 w-full bg-card-dark/95 backdrop-blur-md border-t border-slate-800 z-40 pb-6 pt-4 px-4 shadow-[0_-8px_20px_-5px_rgba(0,0,0,0.3)]">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white">Chaperone Status</span>
+<span class="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+</div>
+<span class="text-xs text-slate-400 mt-0.5">Accepting new chat invitations</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+</div>
+</div>
+
+</body></html>

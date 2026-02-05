@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NikahPlus Login - Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b981", // Emerald 500 - Rich and visible against dark
+                        "primary-hover": "#059669", // Emerald 600
+                        "primary-dark": "#047857", 
+                        "background-dark": "#020617", // Slate 950 - Premium deep dark
+                        "surface-dark": "#0f172a", // Slate 900 - Panels
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.5)",
+                        "glow": "0 0 25px rgba(16, 185, 129, 0.2)"
+                    },
+                    backgroundImage: {
+                        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-enter {
+            animation: fadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }.glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-sans text-slate-100 antialiased overflow-x-hidden transition-colors duration-500 min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
+<div class="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+<div class="absolute -top-[20%] -right-[10%] w-[80%] h-[80%] rounded-full bg-emerald-900/20 blur-[100px] mix-blend-screen opacity-50"></div>
+<div class="absolute top-[30%] -left-[20%] w-[70%] h-[70%] rounded-full bg-slate-800/30 blur-[120px] opacity-40"></div>
+<div class="absolute bottom-[-10%] left-[20%] w-[50%] h-[50%] rounded-full bg-emerald-950/40 blur-[90px] opacity-30"></div>
+</div>
+<div class="relative flex min-h-screen w-full flex-col justify-center py-8 sm:py-12 px-6">
+<div class="relative mx-auto w-full max-w-md">
+<div class="flex flex-col items-center mb-10 animate-enter">
+<div class="relative mb-6 group">
+<div class="relative h-20 w-20 flex items-center justify-center rounded-[24px] bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl ring-1 ring-white/10 transition-transform duration-500 hover:scale-105 group-hover:shadow-emerald-900/20">
+<span class="material-symbols-outlined text-primary text-[38px] drop-shadow-md" style="font-variation-settings: 'FILL' 1, 'wght' 400;">favorite</span>
+</div>
+<div class="absolute inset-0 rounded-[24px] bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+</div>
+<h1 class="font-serif text-white tracking-tight text-4xl font-bold leading-tight text-center mb-2">
+                Nikah<span class="text-primary italic font-serif">Plus</span>
+</h1>
+<p class="text-slate-400 text-sm font-medium tracking-widest text-center uppercase opacity-80">
+                Halal matchmaking with dignity
+            </p>
+</div>
+<div class="mb-8 animate-enter delay-100">
+<div class="flex h-14 w-full items-center justify-center rounded-2xl bg-slate-900/80 p-1.5 shadow-inner ring-1 ring-white/5 backdrop-blur-md">
+<label class="relative flex cursor-pointer h-full flex-1 items-center justify-center rounded-xl transition-all duration-300 has-[:checked]:bg-slate-800 has-[:checked]:shadow-lg has-[:checked]:ring-1 has-[:checked]:ring-white/10 has-[:checked]:text-primary text-slate-400 hover:text-slate-200">
+<input checked="" class="peer sr-only" name="login_method" type="radio" value="Phone"/>
+<span class="material-symbols-outlined mr-2 text-[20px]">smartphone</span>
+<span class="text-sm font-semibold tracking-wide">Phone</span>
+</label>
+<label class="relative flex cursor-pointer h-full flex-1 items-center justify-center rounded-xl transition-all duration-300 has-[:checked]:bg-slate-800 has-[:checked]:shadow-lg has-[:checked]:ring-1 has-[:checked]:ring-white/10 has-[:checked]:text-primary text-slate-400 hover:text-slate-200">
+<input class="peer sr-only" name="login_method" type="radio" value="Email"/>
+<span class="material-symbols-outlined mr-2 text-[20px]">mail</span>
+<span class="text-sm font-semibold tracking-wide">Email</span>
+</label>
+</div>
+</div>
+<div class="mb-6 space-y-5 animate-enter delay-200">
+<div class="group">
+<label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">
+                    Mobile Number
+                </label>
+<div class="relative flex items-center group-focus-within:scale-[1.01] transition-transform duration-300">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none z-10">
+<span class="text-slate-400 font-medium text-base pr-3 border-r border-slate-700 h-6 flex items-center group-focus-within:text-primary transition-colors">+1</span>
+</div>
+<input class="block w-full rounded-2xl border-0 py-4 pl-16 text-white shadow-lg ring-1 ring-inset ring-slate-800 placeholder:text-slate-600 focus:ring-2 focus:ring-inset focus:ring-primary focus:bg-slate-900/90 bg-slate-900/50 backdrop-blur-sm sm:text-base sm:leading-6 transition-all duration-300 ease-out" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+<div class="flex items-start mb-8 animate-enter delay-200 pl-1">
+<div class="flex h-6 items-center">
+<input class="h-5 w-5 rounded-lg border-slate-700 bg-slate-800/80 text-primary focus:ring-primary/40 focus:ring-offset-0 cursor-pointer transition-colors" id="compliance" name="compliance" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm leading-5">
+<label class="font-normal text-slate-400" for="compliance">
+                    I confirm I am 18+ and agree to the <a class="font-semibold text-primary hover:text-primary-light transition-colors underline decoration-slate-700 hover:decoration-primary/50 underline-offset-4" href="#">Terms</a> &amp; <a class="font-semibold text-primary hover:text-primary-light transition-colors underline decoration-slate-700 hover:decoration-primary/50 underline-offset-4" href="#">Privacy Policy</a>.
+                </label>
+</div>
+</div>
+<button class="group w-full rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 py-4 px-4 text-center text-base font-bold text-white shadow-lg shadow-emerald-900/40 hover:shadow-emerald-600/30 hover:to-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 transform active:scale-[0.98] mb-8 flex items-center justify-center gap-2 animate-enter delay-300 ring-1 ring-white/10">
+<span>Send Verification Code</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-2 mb-10 animate-enter delay-300">
+<div class="px-4 py-2 rounded-full bg-slate-900/40 border border-slate-800/80 flex items-center gap-2 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px] text-emerald-500">verified_user</span>
+<span class="text-[11px] font-bold text-slate-300 uppercase tracking-widest">Secure &amp; Verified Entry</span>
+</div>
+</div>
+<div class="relative mb-8 animate-enter delay-300">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-800"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-background-dark px-4 text-xs font-bold uppercase tracking-widest text-slate-600">Or continue with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-10 animate-enter delay-300">
+<button class="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900/50 px-3 py-3.5 text-sm font-semibold text-slate-200 shadow-sm ring-1 ring-inset ring-slate-800 hover:bg-slate-800 hover:scale-[1.02] hover:text-white transition-all duration-200 group" type="button">
+<svg aria-hidden="true" class="h-5 w-5 opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12.0003 20.45c-2.2875 0-4.0425-.6675-5.265-2.0025-1.2225-1.335-1.83375-3.0825-1.83375-5.2425s.61125-3.9075 1.83375-5.2425C7.9578 6.6275 9.7128 5.96 12.0003 5.96c1.17 0 2.2275.21 3.1725.63.945.42 1.7175 1.0275 2.3175 1.8225l-1.665 1.575c-1.05-1.29-2.28-1.935-3.69-1.935-1.5 0-2.73.51-3.69 1.53-.96 1.02-1.44 2.4-1.44 4.14 0 1.74.48 3.12 1.44 4.14.96 1.02 2.19 1.53 3.69 1.53 1.02 0 1.9125-.2625 2.6775-.7875.765-.525 1.2825-1.26 1.5525-2.205h-4.365v-2.16h6.72c.09.42.135.855.135 1.305 0 2.01-.63 3.6525-1.89 4.9275-1.26 1.275-2.925 1.9125-4.995 1.9125z"></path>
+</svg>
+<span class="sr-only">Google</span>
+<span>Google</span>
+</button>
+<button class="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900/50 px-3 py-3.5 text-sm font-semibold text-slate-200 shadow-sm ring-1 ring-inset ring-slate-800 hover:bg-slate-800 hover:scale-[1.02] hover:text-white transition-all duration-200 group" type="button">
+<svg aria-hidden="true" class="h-5 w-5 opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+<path d="M16.92 10.98c-.022-2.587 2.112-3.832 2.208-3.89-1.203-1.76-3.078-2-3.744-2.028-1.583-.162-3.09.932-3.893.932-.804 0-2.043-.907-3.364-.886-1.73.023-3.328 1.006-4.22 2.555-1.803 3.123-.46 7.747 1.294 10.277.857 1.238 1.876 2.628 3.218 2.578 1.285-.05 1.77-.83 3.322-.83 1.55 0 1.992.83 3.336.804 1.378-.024 2.253-1.253 3.097-2.492.97-1.42 1.37-2.796 1.38-2.87-.03-.013-2.65-1.02-2.63-4.05zM14.935 4.67c.698-.846 1.17-2.017 1.04-3.187-1.007.04-2.227.67-2.95 1.516-.648.74-1.214 1.928-1.06 3.064 1.127.087 2.274-.548 2.97-1.393z"></path>
+</svg>
+<span class="sr-only">Apple</span>
+<span>Apple</span>
+</button>
+</div>
+<p class="text-center text-sm text-slate-500 animate-enter delay-300">
+            Already have an account? 
+            <a class="font-bold text-primary hover:text-emerald-400 transition-colors ml-1" href="#">Log In</a>
+</p>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blocked Users - NikahPlus</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3B82F6", 
+              "brand": "#1152d4",
+              "background-light": "#F2F2F7", // Premium light gray background
+              "background-dark": "#000000", // True black for premium OLED feel
+              "surface-light": "#ffffff",
+              "surface-dark": "#1C1C1E", // Dark gray surface
+              "subtle-dark": "#2C2C2E", // Slightly lighter for inputs
+              "border-dark": "#38383A", // Subtle separator
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem", 
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto border-x border-slate-200 dark:border-neutral-900 bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-20 flex items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 justify-between backdrop-blur-xl border-b border-slate-200/50 dark:border-neutral-800/50">
+<button class="flex size-9 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-subtle-dark transition-colors text-brand dark:text-primary">
+<span class="material-symbols-outlined -ml-1">arrow_back_ios_new</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-[17px] font-semibold leading-tight tracking-tight text-center">Blocked Accounts</h2>
+<div class="size-9"></div> 
+</header>
+<div class="px-4 py-3 sticky top-[53px] z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-md">
+<label class="flex flex-col w-full h-10">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full overflow-hidden bg-slate-200/50 dark:bg-subtle-dark transition-all focus-within:ring-1 focus-within:ring-primary/50">
+<div class="text-slate-500 dark:text-slate-400 flex border-none items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden text-slate-900 dark:text-white bg-transparent h-full placeholder:text-slate-500 dark:placeholder:text-slate-500 px-2 text-[15px] font-normal border-none focus:ring-0" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<main class="flex-1 flex flex-col px-4 py-2 pb-20">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm dark:shadow-none divide-y divide-slate-100 dark:divide-border-dark">
+<div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3 flex-1 overflow-hidden">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10 shrink-0 border border-slate-200 dark:border-transparent bg-slate-200 dark:bg-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2wIDxlvtKmXbD2TTOgPzu7qFOHcj1cVu-3XmUwE3DADASF86MWHWBZNrsOJrLQRZedBtpE0O4_c6v8plSqGL3am9BchPiUU-7ZVLjIpo5OSoHnp86-sV2mslO7KeNCUMPhLUVIJ4h1nwL_jC-vZ5yTEiweAOKK87km0TT7S1aRXkEk8sfnINw3vdQyR0rErxXcneR993wDTXzF9V03WAmvYnLsBAPNViaTKOHrVWpOHoBKd3TL4XOMLT46LUtwZK_dIPWlbsodMF9");'></div>
+</div>
+<div class="flex flex-col justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-[15px] font-medium leading-snug truncate group-hover:text-brand dark:group-hover:text-primary transition-colors">Ahmed K.</p>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-normal leading-snug truncate">Blocked on Oct 12</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex cursor-pointer items-center justify-center rounded-full h-7 px-4 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/10 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-600 text-[13px] font-medium tracking-wide">
+                        Unblock
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3 flex-1 overflow-hidden">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10 shrink-0 border border-slate-200 dark:border-transparent bg-slate-200 dark:bg-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkmov5_oiZs8p2cY4htC6Y9odRw5KYgX31CZ4SQlQV_zKg8vaiU_c_5FGrZnxFloH8whPz_FoxObkPpXrVoVwiOpRdIbYfqBS9V8L-l5D0A9znIyizmZ2Dh2g78TYD3gPxIgIhxEqyn-Mxa2Yf_CkY643vzMzD35edk8NPU8fJ4UpxuHeKyMDoh7WYeFmgwswu53wxelSwWd40k10I_FPTkFFu0kVz0VmgokSAT_nsZqcKeT2zYKil5rk9rCuETOqSKYT4Z6IZVpD5");'></div>
+</div>
+<div class="flex flex-col justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-[15px] font-medium leading-snug truncate group-hover:text-brand dark:group-hover:text-primary transition-colors">Fatima R.</p>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-normal leading-snug truncate">Blocked on Sept 28</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex cursor-pointer items-center justify-center rounded-full h-7 px-4 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/10 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-600 text-[13px] font-medium tracking-wide">
+                        Unblock
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3 flex-1 overflow-hidden">
+<div class="aspect-square rounded-full h-10 w-10 shrink-0 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                        U
+                    </div>
+<div class="flex flex-col justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-[15px] font-medium leading-snug truncate group-hover:text-brand dark:group-hover:text-primary transition-colors">User #4829</p>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-normal leading-snug truncate">Blocked on Aug 05</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex cursor-pointer items-center justify-center rounded-full h-7 px-4 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/10 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-600 text-[13px] font-medium tracking-wide">
+                        Unblock
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors opacity-75 group">
+<div class="flex items-center gap-3 flex-1 overflow-hidden">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10 shrink-0 border border-slate-200 dark:border-transparent grayscale bg-slate-200 dark:bg-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaWLZro3htEFnMp9_YA9Un1HOf3a_8ArGwhMuWZd2AMG2Iqt2XU1RgHTOoqASDqH3FDp1J2k230pA5TsuswhWqmPoZXRiOpveKS9_8uGzGKQrSpry3pPsFIS78vWtpWBR1OZcxxV-Syr0NmP6VgFyQ-JsB-ww2D8qAUXC68orlrfmMPqxO8zE4qKx3hVWpL-cZU3ZLFaBYnREv3WoWZaR4AMGRmgVORWPJcoKf9DBJ60BLJ7AF89Ju63_f9aDTfCYveZBsjiMf6oE7");'></div>
+</div>
+<div class="flex flex-col justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-[15px] font-medium leading-snug truncate group-hover:text-brand dark:group-hover:text-primary transition-colors">Zayn M.</p>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-normal leading-snug truncate">Blocked on July 10</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex cursor-pointer items-center justify-center rounded-full h-7 px-4 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/10 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-600 text-[13px] font-medium tracking-wide">
+                        Unblock
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-6 px-2 flex gap-3 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5">info</span>
+<p class="text-[13px] leading-5">
+                Blocked users cannot see your profile or send you messages. Unblocking them will allow them to contact you again.
+            </p>
+</div>
+</main>
+</div>
+
+</body></html>

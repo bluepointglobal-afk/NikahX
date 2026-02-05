@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile + Privacy - NikahPlus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e62b",
+                        "primary-dark": "#12a620",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112112",
+                        "surface-dark": "#1a321c", 
+                        "surface-darker": "#112213",
+                        "input-bg": "rgba(255,255,255,0.05)",
+                        "input-border": "rgba(255,255,255,0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "glow": "0 0 10px rgba(25, 230, 43, 0.15)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>.scrollbar-hide::-webkit-scrollbar {
+    display: none
+    }
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }
+input:checked + div {
+    border-color: #19e62b;
+    background-color: rgba(25, 230, 43, 0.1);
+    color: #19e62b
+    }
+select {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDm4iDQdbcf8nd-NzhDzXtH24_gojVVNPR3kQ9MLGydouLIi6qMrD5mWcBjdg2SdpzfSnI3zZU7WHNeQvpKfOhWfbCEc3I_kl6J4Svp5nTUMY1ICiBS4sPwwpU4x0-JVn17E5Wu4ihjt0MMd72QTr7sX0xZdnVUW7hNhAZOhojqWCC1MX4lnhwRsYkPXArd0UE9P-no1r2ywCwtwVDmvFYgQ6ZrdjA4npf76rfFAVve7yw7lTchJfHhao9OrL4S7_GFf-S_FR0O8uuc);
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact
+    }</style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-white antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-dark border-x border-white/5">
+<header class="sticky top-0 z-50 flex items-center bg-background-dark/95 backdrop-blur-xl px-4 py-3 justify-between border-b border-white/10">
+<button class="text-slate-400 text-base font-medium leading-normal tracking-[0.015em] hover:text-white transition-colors">Cancel</button>
+<h2 class="text-white text-[17px] font-semibold leading-tight tracking-[-0.015em]">Edit Profile</h2>
+<button class="text-primary text-base font-bold leading-normal tracking-[0.015em] hover:brightness-110 transition-colors">Save</button>
+</header>
+<main class="flex-1 pb-10 space-y-6">
+<div class="mt-4 px-4 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-white text-lg font-bold leading-tight">Profile Photos</h3>
+<span class="text-[11px] font-medium text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Verified
+                    </span>
+</div>
+<div class="flex p-1 bg-black/20 rounded-xl border border-white/5">
+<label class="flex-1 cursor-pointer relative group">
+<input class="peer sr-only" name="photo_privacy" type="radio" value="public"/>
+<div class="flex items-center justify-center py-2.5 px-3 rounded-[0.5rem] text-sm font-medium text-slate-400 transition-all peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5">public</span>
+                            Public
+                        </div>
+</label>
+<label class="flex-1 cursor-pointer relative group">
+<input checked="" class="peer sr-only" name="photo_privacy" type="radio" value="blurred"/>
+<div class="flex items-center justify-center py-2.5 px-3 rounded-[0.5rem] text-sm font-medium text-slate-400 transition-all peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5">blur_on</span>
+                            Blurred
+                        </div>
+</label>
+<label class="flex-1 cursor-pointer relative group">
+<input class="peer sr-only" name="photo_privacy" type="radio" value="private"/>
+<div class="flex items-center justify-center py-2.5 px-3 rounded-[0.5rem] text-sm font-medium text-slate-400 transition-all peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5">lock</span>
+                            Private
+                        </div>
+</label>
+</div>
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-3.5 flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">visibility_off</span>
+<p class="text-slate-300 text-[13px] leading-relaxed">
+                        Currently set to <strong class="text-primary font-semibold">Blurred</strong>. Only matched users will see your clear photos. Everyone else sees a blurred preview to protect your privacy.
+                     </p>
+</div>
+<div class="-mx-4 w-auto overflow-hidden">
+<div class="flex overflow-x-auto scrollbar-hide px-4 pb-2 gap-3">
+<div class="relative flex-none w-28 h-36 rounded-xl overflow-hidden group shadow-lg ring-1 ring-white/10">
+<div class="absolute inset-0 bg-cover bg-center blur-[2px]" data-alt="Portrait of a smiling young man in a white shirt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBF_JoJBuTJ2oxec_eLqNhuFGUvqUFMM3IdzmcwCQ_BiO6oCp-z2Dfpzys3k-M7UDTMKXL2jZOMDSkCrf6fwxrzUXG7atHSkaxoPe5_H7Mu_wVz0BETC-cW_rlpux4KrtbPi18Tmbjr_jAahDSXN_3otpKDxhpRv97rjtqHxp_nBRvaYtK_XT0t2mmXwp12zRrDPVIogYc8npBm82BwnX-9eoY928914KnVQCnzhZJ64UqYg3LyNGLIlSAzrGXfJPDb8jh_AEKuOZnd');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/40 hover:bg-red-500/90 rounded-full p-1 transition-colors backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-[14px] block">close</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded-full">Main</div>
+</div>
+<div class="relative flex-none w-28 h-36 rounded-xl overflow-hidden group shadow-lg ring-1 ring-white/10">
+<div class="absolute inset-0 bg-cover bg-center blur-[2px]" data-alt="Man standing outdoors looking at a view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4zeftTAQtmE_GLx8Kmpc7oNu_uZGW2RfFr4MgnREBuAuQDA3_6wF5EZrQwQGx5UTZAXVZCtmkyA5Zflp5HIdBmktlhJZbHt1-Lfdo4bjt6LF4-KYRY2So5tvWgepsscm6u0kuwEkLS_eq6FVNlTWihOgamPc36i8pC2C5kcMFiDbgYPc_WUgHK3iQev9zCKMJt-wyO2LSidWcKBA9p5kHR2WA7I3U692v3-Mn2xJWvcdGXc8tAoHYsEr51ox_tcVU5CYalUV_oi4V');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/40 hover:bg-red-500/90 rounded-full p-1 transition-colors backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-[14px] block">close</span>
+</button>
+</div>
+<div class="relative flex-none w-28 h-36 rounded-xl overflow-hidden group shadow-lg ring-1 ring-white/10">
+<div class="absolute inset-0 bg-cover bg-center blur-[2px]" data-alt="Close up portrait of a man" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSAiAQoduUaQ8tjGWekeA-xixWtpllKPoHiR05j9T9rOK2LnP69hTJ2qwNCdwPO6DDwyWazZtF_3NCzEraQPHzsXPBik02AR1x2AvrlIyzyibhHWa-nH1orRiHLFItafDexL4d2d79CZ_O4AoBQEvQpst1Za9rN4vm8KnGhRp5krHXou4WTzvulBVFkofs1ey1hYPmsRutiT1w0rc8SdW08IdnY-p7h8n2U448mwLH8DZUQDvO9Z59rHMXnCq1YXC-HEjCOiHYFMZ6');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/40 hover:bg-red-500/90 rounded-full p-1 transition-colors backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-[14px] block">close</span>
+</button>
+</div>
+<button class="flex-none w-28 h-36 rounded-xl bg-white/5 border border-dashed border-white/20 flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:border-primary/50 transition-all group">
+<div class="bg-surface-dark p-2.5 rounded-full text-primary group-hover:scale-110 transition-transform shadow-glow">
+<span class="material-symbols-outlined block text-[20px]">add_a_photo</span>
+</div>
+<span class="text-xs font-medium text-slate-400 group-hover:text-primary transition-colors">Add Photo</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-px bg-white/10 mx-4"></div>
+<div class="px-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-white text-lg font-bold">About Me</h3>
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-primary text-xs font-medium hover:bg-white/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">public</span> Public
+                    </div>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-input-bg border border-input-border rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary/50 min-h-[120px] resize-none transition-all" placeholder="Write a short bio about yourself, your hobbies, and what you are looking for..."></textarea>
+<span class="absolute bottom-3 right-3 text-[10px] text-slate-500 group-focus-within:text-primary/70 transition-colors">0/500</span>
+</div>
+</div>
+<div class="px-4 space-y-5">
+<h3 class="text-white text-lg font-bold pt-2">The Basics</h3>
+<div class="group space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Display Name</label>
+<button class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 px-2 py-0.5 rounded hover:bg-white/5">
+<span class="text-[10px] font-medium tracking-wide">MATCHES ONLY</span>
+<span class="material-symbols-outlined text-[14px]">group</span>
+</button>
+</div>
+<input class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all placeholder-slate-600" type="text" value="Amir K."/>
+</div>
+<div class="flex gap-4">
+<div class="group flex-1 space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Age</label>
+<button class="text-primary transition-colors flex items-center gap-1 px-1 py-0.5 rounded hover:bg-white/5">
+<span class="material-symbols-outlined text-[14px]">public</span>
+</button>
+</div>
+<input class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all" type="number" value="28"/>
+</div>
+<div class="group flex-1 space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Height</label>
+<button class="text-primary transition-colors flex items-center gap-1 px-1 py-0.5 rounded hover:bg-white/5">
+<span class="material-symbols-outlined text-[14px]">public</span>
+</button>
+</div>
+<div class="relative">
+<select class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all appearance-none">
+<option>5' 9" (175 cm)</option>
+<option>5' 10" (178 cm)</option>
+<option>5' 11" (180 cm)</option>
+</select>
+</div>
+</div>
+</div>
+<div class="group space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Profession</label>
+<button class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 px-2 py-0.5 rounded hover:bg-white/5">
+<span class="text-[10px] font-medium tracking-wide">HIDDEN</span>
+<span class="material-symbols-outlined text-[14px]">lock</span>
+</button>
+</div>
+<input class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all placeholder-slate-600" type="text" value="Software Engineer"/>
+</div>
+</div>
+<div class="px-4 space-y-5">
+<h3 class="text-white text-lg font-bold pt-2">Islamic Lifestyle</h3>
+<div class="group space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Sect</label>
+<button class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 px-2 py-0.5 rounded hover:bg-white/5">
+<span class="text-[10px] font-medium tracking-wide">MATCHES ONLY</span>
+<span class="material-symbols-outlined text-[14px]">group</span>
+</button>
+</div>
+<div class="relative">
+<select class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all appearance-none">
+<option>Sunni</option>
+<option>Shia</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<div class="group space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest pl-1">Prayers</label>
+<button class="text-primary transition-colors flex items-center gap-1 px-1 py-0.5 rounded hover:bg-white/5">
+<span class="material-symbols-outlined text-[14px]">public</span>
+</button>
+</div>
+<div class="relative">
+<select class="w-full bg-input-bg border border-input-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all appearance-none">
+<option>Always Pray</option>
+<option>Usually Pray</option>
+<option>Sometimes Pray</option>
+</select>
+</div>
+</div>
+</div>
+<div class="px-4 pt-2">
+<h3 class="text-white text-lg font-bold mb-4">Account Privacy</h3>
+<div class="bg-surface-dark rounded-xl border border-white/5 overflow-hidden divide-y divide-white/5">
+<div class="p-4 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="text-sm font-semibold text-white">Incognito Mode</div>
+<div class="text-xs text-slate-400 mt-1">View profiles without notifying them</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="text-sm font-semibold text-white">Hide Profile</div>
+<div class="text-xs text-slate-400 mt-1">You won't appear in new search results</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="px-4 pb-8 pt-4 flex flex-col items-center gap-6">
+<div class="w-full h-px bg-white/10"></div>
+<button class="text-slate-400 text-sm font-medium hover:text-red-500 transition-colors flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-red-500/10">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+                    Pause Matching
+                </button>
+<p class="text-[10px] uppercase tracking-widest text-slate-600 font-medium text-center">NikahPlus Member since 2023 • v2.4.1</p>
+</div>
+</main>
+</div>
+
+</body></html>

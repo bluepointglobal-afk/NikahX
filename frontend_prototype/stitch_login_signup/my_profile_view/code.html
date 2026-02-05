@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NikahPlus - My Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b981", // Deep Emerald
+                        "primary-dark": "#059669",
+                        "accent": "#d97706", // Amber gold
+                        "accent-light": "#fbbf24",
+                        "background-light": "#f3f4f6", 
+                        "background-dark": "#0B0F15", // Richer black for OLED feeling
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#151C26", // Slightly lighter than bg
+                        "surface-highlight": "#1E293B",
+                        "text-main-light": "#111827",
+                        "text-main-dark": "#f9fafb",
+                        "text-sub-light": "#6b7280",
+                        "text-sub-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["DM Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "1rem", 
+                        "2xl": "1.5rem", 
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(16, 185, 129, 0.3)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)'
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(11, 15, 21, 0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-body text-text-main-light dark:text-text-main-dark transition-colors duration-200 min-h-screen pb-32 selection:bg-primary selection:text-white">
+<header class="fixed top-0 inset-x-0 z-50 glass transition-all duration-300">
+<div class="max-w-md mx-auto px-4 h-14 flex items-center justify-between">
+<h1 class="font-display font-bold text-lg tracking-tight text-white">My Profile</h1>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-highlight transition-colors text-text-sub-dark">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-highlight transition-colors text-text-sub-dark">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto w-full pt-20 px-4 flex flex-col gap-6">
+<section class="flex flex-col items-center relative py-4">
+<div class="relative group cursor-pointer mb-4">
+<div class="absolute -inset-2 bg-gradient-to-b from-primary/30 to-transparent rounded-full blur-xl opacity-60"></div>
+<div class="relative w-32 h-32 rounded-full p-1 bg-gradient-to-b from-primary/50 to-surface-dark">
+<div class="w-full h-full rounded-full bg-cover bg-center overflow-hidden border-2 border-surface-dark relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjpLr3kumgCsafr2x8CvkR8H_xfGtnfI4HwLzbU_LkXYIGf3QIawTrrSJKJT0M_Ox7PQMXRLfzu363_ewgyJb1tYpJZVlMo7Q4Zfjb0jvGCFFGv1CoXEp9TYJQyvN1TB88O1Pp_m2hoDUGT957O36jco2Cr-pUdNpCS2x57DMRGIjX5qdEwV2dzqDvNjUGWIQatnNGaX1KJj_4IPUW5ga-FtXClal752kb5MUmD-jhXZoQDLlVvmryeifDSFZm95DpYCO6Mo5XXrra');">
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-1 right-1 bg-surface-dark rounded-full p-1.5 shadow-lg border border-surface-highlight">
+<div class="bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center ring-2 ring-surface-dark">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</div>
+</div>
+</div>
+<div class="text-center space-y-1">
+<h2 class="font-display text-2xl font-bold text-white tracking-tight">Ahmed K., 28</h2>
+<div class="flex items-center justify-center gap-3 text-sm text-text-sub-dark mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-text-sub-dark">location_on</span>
+<span>London, UK</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-gray-600"></span>
+<div class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+<span>Wali Verified</span>
+</div>
+</div>
+</div>
+<div class="w-full mt-8 bg-surface-dark p-4 rounded-2xl border border-white/5 shadow-card">
+<div class="flex justify-between items-end mb-2">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase tracking-wider text-text-sub-dark">Profile Strength</span>
+<span class="text-xs text-gray-400 mt-0.5">Add education to complete</span>
+</div>
+<span class="text-xl font-display font-bold text-primary">85%</span>
+</div>
+<div class="h-2 w-full bg-surface-highlight rounded-full overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent w-full -translate-x-full animate-[shimmer_2s_infinite]"></div>
+<div class="h-full bg-gradient-to-r from-primary-dark to-primary rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" style="width: 85%"></div>
+</div>
+<div class="mt-3 flex justify-end">
+<button class="text-xs font-semibold text-white flex items-center gap-1 hover:text-primary transition-colors">
+                    Finish Profile
+                    <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<section class="bg-gradient-to-r from-blue-900/40 to-blue-900/10 rounded-2xl p-4 border border-blue-500/20 flex items-start gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+<div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/30">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="flex-1 z-10">
+<h3 class="font-display font-bold text-sm text-blue-100">Identity Verified</h3>
+<p class="text-xs text-blue-300/80 mt-1 leading-relaxed">Your ID and selfie match. You have the trusted Blue Badge.</p>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-display font-bold text-lg text-white">My Gallery</h3>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-dark rounded-full border border-white/5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(16,185,129,0.8)]"></span>
+<span class="text-xs font-medium text-gray-300">Visible</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group border border-white/5">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOgNC5nUQFXcWprFrY2QZxfn0aW9Spbwr4L6xosVfnpZG616LdY007uTrei2bI9X9tmnpI0Ofx5H4H9HqTTglXwesD8l1UttJ6FKHIYUt8SAc8zvbRaRRr6L2TJLXievVPQwtdItwet-U3fdjLs3TTAzyYQJzBATCoTltzykoPUa9DPmi20IRQ4pViuOcXQ_bVTFnP2ZUwyqQ7ubpZqHYYVrdtC45NwLDvPI62nhi6yuOOR9Zw2MmJxy4UNSoxtiYQ-AxU6NDR13GC');"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80"></div>
+<div class="absolute bottom-2 left-2">
+<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-white/10 backdrop-blur-md text-white border border-white/10">Main</span>
+</div>
+</div>
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative border border-white/5">
+<div class="absolute inset-0 bg-cover bg-center blur-md scale-110 opacity-60" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9Vj8DMuieL8HLCCG_1R9-zTXAfaiqKUtRLXs5zFDPRrblSoazs-Rm5RpBowmq6nInNFCWpmrNVSA2-nYEwF2eRpE6EvzSk1plr2ztmdyBNXlHg2KKAmBHYgr9YaLe_60HwTD3w5neNCuP5ZBDACjtFyZVzbE1s0YHDuqxEieWCwDcgPqrg0kXcCrXR1AxPAVOZ-3JDkyiBXBQ4rd6TRKQHI2puD_1w5Zs4D-H3N4_22xIe_aXeWReubcVH1m_5Hqyy1X7y3bMtxCx');"></div>
+<div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
+<div class="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-xs">visibility_off</span>
+</div>
+<span class="text-[10px] text-white/90 font-bold uppercase tracking-wider">Private</span>
+</div>
+</div>
+<button class="aspect-[3/4] rounded-xl border border-dashed border-white/20 hover:border-primary/50 bg-surface-dark/50 hover:bg-surface-highlight transition-all flex flex-col items-center justify-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-primary transition-colors group-hover:scale-110 duration-200">
+<span class="material-symbols-outlined text-[20px]">add_a_photo</span>
+</div>
+<span class="text-xs font-medium text-gray-500 group-hover:text-white transition-colors">Add</span>
+</button>
+</div>
+</section>
+<div class="space-y-5">
+<section class="bg-surface-dark rounded-2xl border border-white/5 overflow-hidden">
+<div class="px-5 py-4 flex justify-between items-center border-b border-white/5 bg-surface-highlight/30">
+<div class="flex items-center gap-3">
+<div class="p-1.5 bg-rose-500/10 rounded-lg text-rose-400 border border-rose-500/10">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<h3 class="font-display font-bold text-base text-gray-100">About Me</h3>
+</div>
+<button class="text-text-sub-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<div class="p-5">
+<p class="text-sm leading-relaxed text-gray-300">
+                    Salaam! I'm a software engineer who loves to travel and explore new cultures. I'm looking for someone who values Deen and wants to grow together. I enjoy hiking on weekends and trying out new halal restaurants.
+                </p>
+</div>
+</section>
+<section class="bg-surface-dark rounded-2xl border border-white/5 overflow-hidden">
+<div class="px-5 py-4 flex justify-between items-center border-b border-white/5 bg-surface-highlight/30">
+<div class="flex items-center gap-3">
+<div class="p-1.5 bg-emerald-500/10 rounded-lg text-emerald-400 border border-emerald-500/10">
+<span class="material-symbols-outlined text-[18px]">mosque</span>
+</div>
+<h3 class="font-display font-bold text-base text-gray-100">Deen &amp; Values</h3>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide text-emerald-400 bg-emerald-900/20 px-2 py-1 rounded-md border border-emerald-500/20">
+<span class="material-symbols-outlined text-[12px]">verified_user</span>
+<span>Verified</span>
+</div>
+<button class="text-text-sub-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+</div>
+<div class="p-5">
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1 p-3 rounded-xl bg-surface-highlight/50 border border-white/5">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Sect</span>
+<span class="font-medium text-sm text-gray-200">Sunni</span>
+</div>
+<div class="flex flex-col gap-1 p-3 rounded-xl bg-surface-highlight/50 border border-white/5">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Prayer</span>
+<span class="font-medium text-sm text-gray-200">Always pray</span>
+</div>
+<div class="flex flex-col gap-1 p-3 rounded-xl bg-surface-highlight/50 border border-white/5">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Diet</span>
+<span class="font-medium text-sm text-gray-200">Strictly Halal</span>
+</div>
+<div class="flex flex-col gap-1 p-3 rounded-xl bg-surface-highlight/50 border border-white/5">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Habits</span>
+<span class="font-medium text-sm text-gray-200">No habits</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-dark rounded-2xl border border-white/5 overflow-hidden">
+<div class="px-5 py-4 flex justify-between items-center border-b border-white/5 bg-surface-highlight/30">
+<div class="flex items-center gap-3">
+<div class="p-1.5 bg-accent/10 rounded-lg text-accent border border-accent/10">
+<span class="material-symbols-outlined text-[18px]">diamond</span>
+</div>
+<h3 class="font-display font-bold text-base text-gray-100">Marriage Goals</h3>
+</div>
+<button class="text-text-sub-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<div class="divide-y divide-white/5">
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-highlight text-gray-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-200">Timeline</span>
+<span class="text-xs text-gray-500">Within 1 year</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-highlight text-gray-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">flight_takeoff</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-200">Relocation</span>
+<span class="text-xs text-gray-500">Willing to relocate</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="rounded-2xl border border-dashed border-white/10 bg-surface-highlight/20 flex flex-col items-center justify-center py-8 text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-highlight shadow-inner flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-500 text-2xl">school</span>
+</div>
+<div>
+<h3 class="font-bold text-sm text-gray-200">Education &amp; Work</h3>
+<p class="text-xs text-gray-500 max-w-[200px] mx-auto mt-1">Add your career info to improve match quality.</p>
+</div>
+<button class="text-xs font-bold text-primary uppercase tracking-wide hover:text-primary-dark border border-primary/20 px-4 py-2 rounded-full hover:bg-primary/10 transition-all">
+                Add Details
+            </button>
+</section>
+<section class="bg-surface-dark rounded-2xl border border-white/5 overflow-hidden">
+<div class="px-5 py-4 flex justify-between items-center border-b border-white/5 bg-surface-highlight/30">
+<div class="flex items-center gap-3">
+<div class="p-1.5 bg-indigo-500/10 rounded-lg text-indigo-400 border border-indigo-500/10">
+<span class="material-symbols-outlined text-[18px]">translate</span>
+</div>
+<h3 class="font-display font-bold text-base text-gray-100">Languages</h3>
+</div>
+<button class="text-text-sub-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<div class="p-5 flex flex-wrap gap-2">
+<span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-surface-highlight text-gray-200 border border-white/5">
+                    English
+                    <span class="ml-2 pl-2 border-l border-white/10 text-xs text-gray-500 font-normal">Native</span>
+</span>
+<span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-surface-highlight text-gray-200 border border-white/5">
+                    Arabic
+                    <span class="ml-2 pl-2 border-l border-white/10 text-xs text-gray-500 font-normal">Fluent</span>
+</span>
+</div>
+</section>
+</div>
+<div class="mt-2 mb-8 space-y-4">
+<button class="w-full bg-surface-dark p-4 rounded-xl border border-white/5 flex items-center justify-between group hover:border-white/10 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-highlight flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">visibility_off</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-sm text-white">Hide Profile</p>
+<p class="text-xs text-gray-500">Temporarily disappear from search</p>
+</div>
+</div>
+<div class="w-10 h-5 bg-surface-highlight rounded-full relative transition-colors group-hover:bg-gray-700">
+<div class="absolute top-1 left-1 w-3 h-3 bg-gray-400 rounded-full shadow-sm transition-transform"></div>
+</div>
+</button>
+<button class="w-full p-2 text-center text-xs font-medium text-rose-500/80 hover:text-rose-500 transition-colors">
+            Delete Account permanently
+        </button>
+</div>
+</main>
+<div class="fixed bottom-6 left-0 right-0 px-4 z-40 pointer-events-none">
+<div class="max-w-md mx-auto w-full pointer-events-auto">
+<button class="w-full bg-white text-black h-14 rounded-2xl shadow-xl shadow-black/40 flex items-center justify-center gap-2 transition-transform active:scale-[0.98] border border-white/10 hover:bg-gray-50">
+<span class="material-symbols-outlined">edit_square</span>
+<span class="font-bold tracking-wide text-sm uppercase">Edit Full Profile</span>
+</button>
+</div>
+</div>
+
+</body></html>

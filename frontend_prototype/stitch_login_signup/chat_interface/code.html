@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NikahPlus Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11d473",
+                        "primary-dark": "#0eb361",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0a1610", // Slightly darker for more contrast
+                        "surface-dark": "#12261c",    // Adjusted surface
+                        "surface-card": "#183024",    // Card surface
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #183024;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display h-screen flex flex-col overflow-hidden text-white antialiased selection:bg-primary/30">
+<header class="flex-none bg-background-dark/95 backdrop-blur-md border-b border-[#183024] z-20 sticky top-0">
+<div class="px-4 py-3 flex items-center justify-between gap-3">
+<button class="text-gray-300 hover:text-white p-2 -ml-2 rounded-full hover:bg-[#183024] transition-colors active:scale-95">
+<span class="material-symbols-outlined align-middle">arrow_back_ios_new</span>
+</button>
+<div class="flex flex-1 items-center gap-3 overflow-hidden cursor-pointer rounded-xl hover:bg-[#183024] p-1.5 transition-colors group">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full w-10 h-10 border border-[#2a4538] group-hover:border-primary/50 transition-colors" data-alt="Portrait of a young man with a beard smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBa_QPkIFMwlCnLZ5CNOU1ut0BBeWhhe1AkxjauLTse_llD_Zp8ILWrlscBPASxNcrPXTC_SpPn-GgF8WJBRznBMeuUKg4kmRMGIz5gNVPER4p9ZV2djMEpRp6wO2mhZUMp3FizvkQLhwquOBJwDFYWPK1Ry7CcfNpmzcbTPW-Ki_MAW0pQD4SJivQCrChIFGmJ2WD0rTfs00R_ONNZeFjunSvFQ7tl7TroZcu0Tmk5GjvWdTEw8x1GkGPpHiPv61DHvA1WFeVkfbg8");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary border-2 border-background-dark rounded-full"></div>
+</div>
+<div class="flex flex-col overflow-hidden">
+<div class="flex items-center gap-1.5">
+<h2 class="text-sm font-bold leading-tight text-white truncate">Ahmed</h2>
+<span class="material-symbols-outlined text-primary text-[14px] filled" style="font-variation-settings: 'FILL' 1">verified</span>
+</div>
+<span class="text-[11px] text-[#11d473] font-medium truncate flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#11d473] animate-pulse"></span>
+                    Online now
+                </span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#183024] text-gray-300 hover:text-white transition-colors" title="Video Call">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#183024] text-gray-300 hover:text-white transition-colors" title="More Options">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="bg-[#11d473]/5 px-4 py-2 flex items-center justify-between border-b border-[#11d473]/10 backdrop-blur-sm">
+<div class="flex items-center gap-2.5">
+<div class="flex items-center justify-center w-5 h-5 rounded-full bg-[#11d473]/20 text-primary animate-pulse">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+</div>
+<p class="text-[11px] font-medium text-[#11d473] tracking-wide uppercase">Wali Mode Active</p>
+</div>
+<button class="text-[11px] font-semibold text-white/80 hover:text-white bg-[#11d473]/10 hover:bg-[#11d473]/20 px-2.5 py-1 rounded-full transition-all">
+            View Details
+        </button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-4 space-y-6 hide-scrollbar bg-background-dark relative">
+<div class="flex justify-center pt-2">
+<span class="text-[10px] font-semibold text-gray-400 bg-[#183024]/80 backdrop-blur-sm border border-[#2a4538] px-3 py-1 rounded-full shadow-sm">Today</span>
+</div>
+<div class="text-center px-8 py-2">
+<p class="text-xs text-gray-400 font-normal leading-relaxed">
+            You matched with <span class="text-white font-medium">Ahmed</span>! <br/>Say Salaam to start the conversation respectfully.
+        </p>
+</div>
+<div class="flex justify-center my-2">
+<div class="flex items-start gap-3 bg-gradient-to-br from-[#2c2a1e] to-[#181816] border border-amber-900/30 px-4 py-3 rounded-2xl max-w-[90%] shadow-lg">
+<span class="material-symbols-outlined text-amber-500/80 text-[18px] mt-0.5">lightbulb</span>
+<div class="flex flex-col gap-0.5">
+<span class="text-[11px] font-bold text-amber-500 uppercase tracking-wide">Etiquette Tip</span>
+<p class="text-xs text-gray-300 leading-relaxed">
+                    Keep the conversation purposeful. Avoid private meetings without a chaperone.
+                </p>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-end gap-2 group mb-2">
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="bg-[#11d473] text-[#052e1f] px-5 py-3.5 rounded-[1.25rem] rounded-tr-sm shadow-md">
+<p class="text-[15px] leading-relaxed font-medium">As-salamu alaykum, I noticed you enjoy hiking. Have you been to the Atlas Mountains?</p>
+</div>
+<div class="flex items-center gap-1 pr-1 opacity-70">
+<span class="text-[10px] text-gray-400 font-medium">10:42 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]">done_all</span>
+</div>
+</div>
+</div>
+<div class="flex items-end gap-3 group mb-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full w-8 h-8 shrink-0 mb-5 ring-2 ring-[#183024]" data-alt="Portrait of Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABfIBNzP-TlMBfgngiNvFY3P8XUSZ7DHqrLNUU-Z01VEuNME2nUPYH_kGvB0V5g2mCIBbFX5PR0TJlmI_cqFu3D2sgy06Mou2bl0PfngCukTeGRx5_NYRx9WPwxn3ZH7e63J_uzJrbwVo7f-U-Bel2IUzSrT32UoV0I5JSRFUMREcQ3_eBlkEVKH1MedJ3ri0LZAW3cInlN_EiM8y2SY4hGSHwwb8GipfnNrxEjD2nlr26OFYlUC3PbaWMDKoke2z595BesZUIamjN");'></div>
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="bg-[#183024] text-gray-100 px-5 py-3.5 rounded-[1.25rem] rounded-tl-sm shadow-sm border border-[#2a4538]">
+<p class="text-[15px] leading-relaxed">Wa alaykumu as-salam! Yes, alhamdulillah, it's my favorite hobby. I went there last summer, it was breathtaking.</p>
+</div>
+<span class="text-[10px] text-gray-500 font-medium pl-1">10:45 AM</span>
+</div>
+</div>
+<div class="flex items-end gap-3 group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full w-8 h-8 shrink-0 mb-5 ring-2 ring-[#183024]" data-alt="Portrait of Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWX1V0bkF28h2zcm_I1qPncqoYUb5whayi9i4nF0KhkJyWu6VJdjYYXMH6GCnMiwrdz2JJ2j7pUK5JUdPC1XfK20CX2cjz2gkD9nAzxfWc94ZdJiXAfJVqQeg7yKmRCYCKOVuq1XOfpbUUXGFNa5_D1E59cNSYLE8ySsi_cSlCWWX-048PQ7Y6hNlsyzV1hhf4S-ug3SSDpQHIYraVA2r_pGAaSegq9a5VuA5fQpNmuHa7tvBf0KvbG92SNAPTfn6-U6CaHF83tL9V");'></div>
+<div class="flex flex-col gap-1 items-start max-w-[75%]">
+<div class="bg-[#183024] p-1.5 rounded-[1.25rem] rounded-tl-sm shadow-sm border border-[#2a4538] overflow-hidden relative">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden group/image cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center blur-lg scale-110 opacity-60" data-alt="Mountain landscape blurred" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0zHyBK4luV0CJAh87MzsheLmEE2HXmPjdNjW-PwY4H2dynC-6L0RsX1K5T0UZl5rE1GUhzfU2ywujVaJTBHR91D-wmQttbNwHKIYXi5IDsEJXD7NQNxrrfwGYQv2v09tdOgiSqNp0GsLpY3_JKIt3EK0pxK_Q2dj0Nee6qCT_4Y5HMHqdwEIbbzAMWQmm7gaFJVOd71ZZKaNkgGqehmHbQAvmM6Ber8HfO1mxaqRlOdAooRcLZHpvyxQn78Dga4hY52pKOu_r6sYo");'></div>
+<div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-2 backdrop-blur-md border border-white/10">
+<span class="material-symbols-outlined text-white/90 text-[20px]">visibility_off</span>
+</div>
+<p class="text-white text-xs font-semibold mb-0.5">Photo Hidden</p>
+<p class="text-gray-400 text-[10px] mb-3">Tap to reveal safely</p>
+<button class="bg-[#11d473] hover:bg-[#0eb361] text-[#052e1f] text-[10px] font-bold px-4 py-1.5 rounded-full transition-colors shadow-lg">
+                            Reveal Photo
+                        </button>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-gray-500 font-medium pl-1">10:46 AM</span>
+</div>
+</div>
+<div class="flex justify-center mt-6 mb-2">
+<div class="flex items-center gap-2 bg-[#183024] px-3 py-1.5 rounded-full border border-[#2a4538]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#11d473]"></div>
+<span class="text-[10px] uppercase tracking-wider font-bold text-gray-400">Wali Joined the chat</span>
+</div>
+</div>
+</main>
+<footer class="flex-none bg-background-dark p-3 border-t border-[#183024] pb-8 md:pb-3 z-20">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar mb-3 pb-1">
+<button class="shrink-0 flex items-center gap-2 bg-[#183024] hover:bg-[#203c2e] border border-[#2a4538] hover:border-primary/40 rounded-full px-4 py-2 transition-all group shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-[#11d473]">chat_bubble</span>
+<span class="text-xs font-medium text-gray-300 group-hover:text-white whitespace-nowrap">Halal Icebreakers</span>
+</button>
+<button class="shrink-0 flex items-center gap-2 bg-[#183024] hover:bg-[#203c2e] border border-[#2a4538] hover:border-primary/40 rounded-full px-4 py-2 transition-all group shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-[#11d473]">image</span>
+<span class="text-xs font-medium text-gray-300 group-hover:text-white whitespace-nowrap">Request Photo</span>
+</button>
+<button class="shrink-0 flex items-center gap-2 bg-[#183024] hover:bg-[#203c2e] border border-[#2a4538] hover:border-primary/40 rounded-full px-4 py-2 transition-all group shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px] text-[#11d473]">flag</span>
+<span class="text-xs font-medium text-gray-300 group-hover:text-white whitespace-nowrap">Report</span>
+</button>
+</div>
+<div class="flex items-end gap-2">
+<button class="flex items-center justify-center w-11 h-11 shrink-0 rounded-full text-gray-400 hover:text-[#11d473] bg-[#183024] border border-[#2a4538] hover:border-primary/30 hover:bg-[#203c2e] transition-all" title="Attachments">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+<div class="flex-1 bg-[#183024] rounded-[1.5rem] flex items-end min-h-[44px] border border-[#2a4538] focus-within:border-[#11d473]/50 focus-within:bg-[#12261c] focus-within:ring-1 focus-within:ring-[#11d473]/20 transition-all shadow-inner">
+<textarea class="w-full bg-transparent border-none text-sm text-white placeholder-gray-500 focus:ring-0 resize-none py-3 px-4 max-h-32 rounded-[1.5rem] hide-scrollbar leading-relaxed" placeholder="Type a respectful message..." rows="1"></textarea>
+<button class="p-2.5 mr-1 mb-0.5 text-gray-500 hover:text-[#11d473] rounded-full transition-colors" title="Emoji">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+</div>
+<button class="flex items-center justify-center w-11 h-11 shrink-0 rounded-full bg-[#11d473] text-[#052e1f] shadow-[0_0_15px_rgba(17,212,115,0.2)] hover:shadow-[0_0_20px_rgba(17,212,115,0.4)] hover:bg-[#0eb361] active:scale-95 transition-all">
+<span class="material-symbols-outlined filled text-[20px]" style="font-variation-settings: 'FILL' 1">mic</span>
+</button>
+</div>
+</footer>
+
+</body></html>

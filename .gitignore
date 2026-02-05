@@ -1,0 +1,18 @@
+# Supabase
+/supabase/.branches
+/supabase/.temp
+/supabase/functions/**/.env
+
+# Node
+node_modules/
+.npm
+.DS_Store
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode
+.idea
