@@ -6,6 +6,7 @@ Import via `import { ... } from "../_shared/mod.ts"`.
 
 ## Structure
 - `stripe_checkout/`: Create Stripe Checkout session.
+- `stripe_portal/`: Create Stripe Billing Portal session (returns URL for customer to manage billing).
 - `stripe_webhook/`: Stripe webhook handler (signature verified) -> updates `profiles` premium state.
 - `invite_guardian/`: Creates a wali invite code (out-of-band delivery for MVP).
 - `accept_guardian_invite/`: Wali accepts invite code, activates wali link.
