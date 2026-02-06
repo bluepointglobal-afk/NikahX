@@ -1,18 +1,13 @@
 -- Seed Data
--- Passwords should be handled by Supabase Auth in real scenarios. here we just insert profiles
--- Note: In local dev, you'd usually create users via Auth API first. 
--- For SQL seeding, we assume IDs exist or we insert into auth.users if possible (usually restricted).
--- We will just insert into public.profiles assuming the IDs match what the developer creates or using a mock ID strategy.
+-- Commented out for local development. Create test users via Supabase Studio UI after startup.
+-- Auth users must be created first before profiles can be inserted due to foreign key constraints.
 
--- User 1: Ahmed (Male, 25, London)
-INSERT INTO profiles (id, email, full_name, gender, dob, city, country, sect, wants_hijab, has_children)
-VALUES 
-    ('00000000-0000-0000-0000-000000000001', 'ahmed@test.com', 'Ahmed Ali', 'male', '1999-01-01', 'London', 'UK', 'Sunni', true, false);
+-- To create test users:
+-- 1. Start Supabase and open Studio (http://localhost:54323)
+-- 2. Go to Authentication > Users > Add User
+-- 3. Create test accounts with proper auth flows
+-- 4. Profiles will be auto-created via triggers on auth.users
 
--- User 2: Fatima (Female, 23, London)
-INSERT INTO profiles (id, email, full_name, gender, dob, city, country, sect, wants_hijab, has_children)
-VALUES 
-    ('00000000-0000-0000-0000-000000000002', 'fatima@test.com', 'Fatima Khan', 'female', '2001-01-01', 'London', 'UK', 'Sunni', true, false);
-
--- User 3: Zaid (Male, 17, ERROR should fail)
--- INSERT INTO profiles ... VALUES ... '2008-01-01' -> Should fail check constraint.
+-- Example test users to create manually:
+-- - ahmed@test.com (Male, 25, London)
+-- - fatima@test.com (Female, 23, London)

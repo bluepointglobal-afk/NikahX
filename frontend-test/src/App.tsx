@@ -13,6 +13,15 @@ import Premium from './pages/Premium';
 import SubscriptionSuccess from './pages/SubscriptionSuccess';
 import Subscription from './pages/Subscription';
 
+// Phase 3 Routes
+import SwipePage from './pages/SwipePage';
+import MatchesPage from './pages/MatchesPage';
+import ChatPage from './pages/ChatPage';
+import FamilyPanel from './pages/FamilyPanel';
+import MahrCalculator from './pages/MahrCalculator';
+import FirasaPage from './pages/FirasaPage';
+import MuftiAI from './pages/MuftiAI';
+
 function App() {
   return (
     <AuthProvider>
@@ -95,6 +104,70 @@ function App() {
             element={
               <ProtectedRoute>
                 <Subscription />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Phase 3 Routes */}
+          <Route
+            path="/swipe"
+            element={
+              <ProtectedRoute>
+                <SwipePage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/matches"
+            element={
+              <ProtectedRoute>
+                <MatchesPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/chat/:matchId"
+            element={
+              <ProtectedRoute>
+                <ChatPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/family-panel"
+            element={
+              <ProtectedRoute>
+                <FamilyPanel />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/mahr-calculator"
+            element={
+              <ProtectedRoute>
+                <MahrCalculator />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/firasa/:userId"
+            element={
+              <ProtectedRoute>
+                <FirasaPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/mufti-ai"
+            element={
+              <ProtectedRoute>
+                <MuftiAI />
               </ProtectedRoute>
             }
           />

@@ -52,7 +52,13 @@ create trigger update_preferences_modtime
   for each row execute procedure public.update_updated_at_column();
 
 -- 3) Wali / Guardian involvement
-create type if not exists public.wali_link_status_enum as enum ('pending','active','rejected','revoked');
+do $$
+begin
+  if not exists (select 1 from pg_type where typname = 'wali_link_status_enum') then
+    create type public.wali_link_status_enum as enum ('pending','active','rejected','revoked');
+  end if;
+end
+$$;
 
 create table if not exists public.wali_links (
   id uuid primary key default uuid_generate_v4(),
@@ -86,7 +92,13 @@ as $$
 $$;
 
 -- 4) Match workflow: pending wali approvals + no photos until mutual consent
-create type if not exists public.match_status_enum as enum ('pending_wali','active','rejected','cancelled');
+do $$
+begin
+  if not exists (select 1 from pg_type where typname = 'match_status_enum') then
+    create type public.match_status_enum as enum ('pending_wali','active','rejected','cancelled');
+  end if;
+end
+$$;
 
 alter table public.matches
   add column if not exists status public.match_status_enum not null default 'pending_wali',
@@ -377,37 +389,44 @@ alter table public.preferences enable row level security;
 alter table public.wali_links enable row level security;
 
 -- preferences: self only
-create policy if not exists "preferences_select_own"
+drop policy if exists "preferences_select_own" on public.preferences;
+create policy "preferences_select_own"
   on public.preferences for select
   using (auth.uid() = user_id);
 
-create policy if not exists "preferences_insert_own"
+drop policy if exists "preferences_insert_own" on public.preferences;
+create policy "preferences_insert_own"
   on public.preferences for insert
   with check (auth.uid() = user_id);
 
-create policy if not exists "preferences_update_own"
+drop policy if exists "preferences_update_own" on public.preferences;
+create policy "preferences_update_own"
   on public.preferences for update
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
 -- wali_links:
 -- Ward can create an invite for themselves
-create policy if not exists "wali_links_insert_own"
+drop policy if exists "wali_links_insert_own" on public.wali_links;
+create policy "wali_links_insert_own"
   on public.wali_links for insert
   with check (auth.uid() = ward_id);
 
 -- Ward can see their own wali links
-create policy if not exists "wali_links_select_own"
+drop policy if exists "wali_links_select_own" on public.wali_links;
+create policy "wali_links_select_own"
   on public.wali_links for select
   using (auth.uid() = ward_id);
 
 -- Wali can see links where they are assigned
-create policy if not exists "wali_links_select_as_wali"
+drop policy if exists "wali_links_select_as_wali" on public.wali_links;
+create policy "wali_links_select_as_wali"
   on public.wali_links for select
   using (auth.uid() = wali_user_id);
 
 -- Ward can update/revoke their own link; wali can update to accept
-create policy if not exists "wali_links_update_ward_or_wali"
+drop policy if exists "wali_links_update_ward_or_wali" on public.wali_links;
+create policy "wali_links_update_ward_or_wali"
   on public.wali_links for update
   using (auth.uid() = ward_id or auth.uid() = wali_user_id)
   with check (auth.uid() = ward_id or auth.uid() = wali_user_id);
