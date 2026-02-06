@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './pages/Auth';
 import Home from './pages/Home';
-import Discovery from './pages/Discovery';
+import DiscoveryPage from './pages/DiscoveryPage';
 import VerifyEmail from './pages/VerifyEmail';
 import { AuthProvider } from './lib/auth';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -13,14 +13,14 @@ import Premium from './pages/Premium';
 import SubscriptionSuccess from './pages/SubscriptionSuccess';
 import Subscription from './pages/Subscription';
 
-// Phase 3 Routes
+// Phase 3 Routes (Stitch Design)
 import SwipePage from './pages/SwipePage';
-import MatchesPage from './pages/MatchesPage';
-import ChatPage from './pages/ChatPage';
+import MatchesPageStitch from './pages/MatchesPageStitch';
+import ChatPageStitch from './pages/ChatPageStitch';
 import FamilyPanel from './pages/FamilyPanel';
-import MahrCalculator from './pages/MahrCalculator';
+import MahrCalculatorStitch from './pages/MahrCalculatorStitch';
 import FirasaPage from './pages/FirasaPage';
-import MuftiAI from './pages/MuftiAI';
+import MuftiAIStitch from './pages/MuftiAIStitch';
 
 function App() {
   return (
@@ -76,7 +76,7 @@ function App() {
             path="/discover"
             element={
               <ProtectedRoute>
-                <Discovery />
+                <DiscoveryPage />
               </ProtectedRoute>
             }
           />
@@ -122,7 +122,7 @@ function App() {
             path="/matches"
             element={
               <ProtectedRoute>
-                <MatchesPage />
+                <MatchesPageStitch />
               </ProtectedRoute>
             }
           />
@@ -131,7 +131,7 @@ function App() {
             path="/chat/:matchId"
             element={
               <ProtectedRoute>
-                <ChatPage />
+                <ChatPageStitch />
               </ProtectedRoute>
             }
           />
@@ -149,7 +149,7 @@ function App() {
             path="/mahr-calculator"
             element={
               <ProtectedRoute>
-                <MahrCalculator />
+                <MahrCalculatorStitch />
               </ProtectedRoute>
             }
           />
@@ -167,7 +167,7 @@ function App() {
             path="/mufti-ai"
             element={
               <ProtectedRoute>
-                <MuftiAI />
+                <MuftiAIStitch />
               </ProtectedRoute>
             }
           />
