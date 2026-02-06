@@ -7,11 +7,11 @@ import { sendPushNotification, waliApprovalPush } from "../_shared/push.ts"
 /**
  * Wali Approval Alert Edge Function (Scheduled)
  * 
- * Runs every 6 hours to find matches pending wali approval for >24 hours.
+ * Runs every 6 hours to find matches pending wali approval for 24+ hours.
  * Sends reminder emails to walis who haven't yet approved.
  * 
  * Trigger: Supabase cron job or external scheduler
- * Schedule: 0 */6 * * * (every 6 hours)
+ * Cron: every 6 hours
  * 
  * Can also be called manually via POST for testing.
  */

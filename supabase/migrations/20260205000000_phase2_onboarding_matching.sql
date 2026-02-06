@@ -61,7 +61,7 @@ end
 $$;
 
 create table if not exists public.wali_links (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   ward_id uuid references public.profiles(id) on delete cascade not null,
   wali_user_id uuid references public.profiles(id) on delete cascade,
   wali_contact text not null,

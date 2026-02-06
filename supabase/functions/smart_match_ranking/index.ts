@@ -17,7 +17,7 @@ import { getAuthenticatedSupabaseClient, getUser } from "../_shared/auth.ts"
  * - Madhab compatibility (0-10 points)
  * - Photo quality score (0-10 points)
  * 
- * Schedule: 0 */6 * * * (every 6 hours)
+ * Cron: every 6 hours
  */
 
 interface RankingRequest {

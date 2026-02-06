@@ -57,7 +57,7 @@ CREATE INDEX IF NOT EXISTS idx_messages_match_active
 -- 3.1 MESSAGE READ RECEIPTS
 -- Tracks when each participant reads a message
 CREATE TABLE IF NOT EXISTS public.message_read_receipts (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   message_id UUID REFERENCES public.messages(id) ON DELETE CASCADE NOT NULL,
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   read_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -71,7 +71,7 @@ CREATE INDEX IF NOT EXISTS idx_read_receipts_user ON public.message_read_receipt
 -- 3.2 BLOCKED USERS
 -- Allows users to block others, filters from discovery
 CREATE TABLE IF NOT EXISTS public.blocked_users (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   blocker_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   blocked_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   reason public.block_reason_enum DEFAULT 'unspecified',
@@ -90,7 +90,7 @@ CREATE INDEX IF NOT EXISTS idx_blocked_both ON public.blocked_users(blocker_id, 
 -- 3.3 FAMILY PERMISSIONS
 -- Granular permissions for wali oversight
 CREATE TABLE IF NOT EXISTS public.family_permissions (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   wali_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   ward_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   can_view_matches BOOLEAN DEFAULT TRUE,
@@ -110,7 +110,7 @@ CREATE INDEX IF NOT EXISTS idx_family_perm_ward ON public.family_permissions(war
 -- 3.4 FAMILY APPROVALS
 -- Tracks wali decisions on specific matches
 CREATE TABLE IF NOT EXISTS public.family_approvals (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   match_id UUID REFERENCES public.matches(id) ON DELETE CASCADE NOT NULL,
   wali_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   ward_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
@@ -130,7 +130,7 @@ CREATE INDEX IF NOT EXISTS idx_family_approval_ward ON public.family_approvals(w
 -- 3.5 MAHR CALCULATIONS
 -- Islamic dower tracking with regional context
 CREATE TABLE IF NOT EXISTS public.mahr_calculations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   match_id UUID REFERENCES public.matches(id) ON DELETE CASCADE NOT NULL,
   
@@ -165,7 +165,7 @@ CREATE INDEX IF NOT EXISTS idx_mahr_user ON public.mahr_calculations(user_id);
 -- 3.6 FIRASA REPORTS
 -- AI-generated character analysis/compatibility insights
 CREATE TABLE IF NOT EXISTS public.firasa_reports (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   requester_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   subject_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   match_id UUID REFERENCES public.matches(id) ON DELETE SET NULL,
@@ -193,7 +193,7 @@ CREATE INDEX IF NOT EXISTS idx_firasa_expiry ON public.firasa_reports(expires_at
 -- 3.7 MUFTI CONVERSATIONS
 -- AI Islamic guidance chat history
 CREATE TABLE IF NOT EXISTS public.mufti_conversations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   
   -- Conversation content
@@ -218,7 +218,7 @@ CREATE INDEX IF NOT EXISTS idx_mufti_active ON public.mufti_conversations(user_i
 
 -- 3.8 NOTIFICATIONS TABLE (for trigger-generated notifications)
 CREATE TABLE IF NOT EXISTS public.notifications (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   type TEXT NOT NULL,
   title TEXT NOT NULL,

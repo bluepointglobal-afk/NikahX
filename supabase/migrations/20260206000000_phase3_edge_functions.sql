@@ -14,7 +14,7 @@
 
 -- Rate Limit Tracker for AI features (Firasa, Mufti)
 CREATE TABLE IF NOT EXISTS public.rate_limit_tracker (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   feature TEXT NOT NULL, -- 'firasa', 'mufti', etc.
   period_type TEXT NOT NULL CHECK (period_type IN ('daily', 'monthly')),
@@ -59,7 +59,7 @@ $$;
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS public.match_ranking_cache (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   ranked_profiles JSONB NOT NULL DEFAULT '[]'::JSONB, -- Array of {profile_id, score, factors}
   total_candidates INTEGER DEFAULT 0,
@@ -95,7 +95,7 @@ CREATE INDEX IF NOT EXISTS idx_user_presence_online
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS public.notification_logs (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
   notification_type TEXT NOT NULL, -- 'match', 'message', 'wali_reminder', 'digest'
   channel TEXT NOT NULL, -- 'email', 'push', 'sms'
@@ -117,7 +117,7 @@ CREATE INDEX IF NOT EXISTS idx_notification_logs_type
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS public.currency_cache (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   base_currency TEXT NOT NULL DEFAULT 'USD',
   rates JSONB NOT NULL, -- {SAR: 3.75, AED: 3.67, ...}
   gold_price_usd NUMERIC(10,2), -- per troy ounce
@@ -270,7 +270,7 @@ BEGIN
       
     -- Create mufti_messages if not exists with all needed columns
     CREATE TABLE IF NOT EXISTS public.mufti_messages (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
       conversation_id UUID REFERENCES public.mufti_conversations(id) ON DELETE CASCADE NOT NULL,
       role TEXT NOT NULL CHECK (role IN ('user', 'assistant')),
       content TEXT NOT NULL,

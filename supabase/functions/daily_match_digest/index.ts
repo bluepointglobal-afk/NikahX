@@ -9,7 +9,7 @@ import { sendEmail, dailyDigestEmail } from "../_shared/email.ts"
  * Runs at 9 AM (local timezone) to send users a digest of their new matches.
  * Includes top 3 matches with compatibility info and mahr statistics.
  * 
- * Schedule: 0 9 * * * (daily at 9 AM)
+ * Cron: daily at 9 AM
  * 
  * Can also be called manually via POST for testing.
  */

@@ -42,7 +42,7 @@ CREATE TABLE profiles (
 -- SWIPES / INTERACTIONS TABLE
 -- Records every "like" or "pass" action.
 CREATE TABLE swipes (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     actor_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     target_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     action TEXT NOT NULL CHECK (action IN ('like', 'pass')),
@@ -54,7 +54,7 @@ CREATE TABLE swipes (
 -- MATCHES TABLE
 -- Created when two users mutually like each other.
 CREATE TABLE matches (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user1_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     user2_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     
@@ -70,7 +70,7 @@ CREATE TABLE matches (
 -- MESSAGES TABLE
 -- Encrypted-at-rest potential here, but for now standard text.
 CREATE TABLE messages (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     match_id UUID REFERENCES matches(id) ON DELETE CASCADE NOT NULL,
     sender_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     content TEXT NOT NULL CHECK (length(content) > 0),
@@ -82,7 +82,7 @@ CREATE TABLE messages (
 -- FAMILY / WALI ACCESS TABLE (Observer Pattern)
 -- Allows a family member to "observe" a match conversation if enabled.
 CREATE TABLE family_observers (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     match_id UUID REFERENCES matches(id) ON DELETE CASCADE NOT NULL,
     observer_id UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL,
     granted_by UUID REFERENCES profiles(id) ON DELETE CASCADE NOT NULL, -- Which user granted access
