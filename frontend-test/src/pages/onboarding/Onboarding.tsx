@@ -66,16 +66,20 @@ export default function OnboardingAccountBasics() {
 
       const [city, country] = location.split(',').map(s => s.trim());
 
+      // Use upsert to create profile if it doesn't exist
       const { error } = await supabase
         .from('profiles')
-        .update({
+        .upsert({
+          id: user.id,
+          email: user.email,
           full_name: fullName.trim(),
           gender,
           dob,
           country: country || null,
           city: city || null,
-        })
-        .eq('id', user.id);
+        }, {
+          onConflict: 'id'
+        });
 
       if (error) throw error;
       nav('/onboarding/preferences');
