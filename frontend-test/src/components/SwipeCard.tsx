@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+import type { CompatibilityFactors } from '../types';
+
 type Profile = {
   id: string;
   full_name: string | null;
@@ -8,6 +10,8 @@ type Profile = {
   country: string | null;
   one_liner?: string | null;
   profile_photo_url?: string | null;
+  score?: number;
+  factors?: CompatibilityFactors;
 };
 
 type SwipeCardProps = {
@@ -50,16 +54,23 @@ export default function SwipeCard({
 
   return (
     <div className="w-full">
-      {/* Card Counter */}
+      {/* Card Counter & Score */}
       <div className="flex justify-between items-center mb-4">
         <span className="text-slate-400 text-sm">
           {currentIndex + 1} / {totalCards}
         </span>
-        {isPremium && (
-          <span className="text-xs bg-amber-500/20 text-amber-200 px-3 py-1 rounded-full ring-1 ring-amber-500/30">
-            Premium
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          {profile.score !== undefined && (
+            <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full ring-1 ring-emerald-500/30">
+              {profile.score}% Match
+            </span>
+          )}
+          {isPremium && (
+            <span className="text-xs bg-amber-500/20 text-amber-200 px-3 py-1 rounded-full ring-1 ring-amber-500/30">
+              Premium
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Main Card */}

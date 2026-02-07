@@ -1,150 +1,30 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+/**
+ * NikahPlus Phase 2 - Enhanced Chat Page
+ * Real-time messaging between matched users
+ */
+
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
-import { useAuth } from '../lib/auth';
 import { useMessages } from '../hooks/useMessages';
-import { usePresence } from '../hooks/usePresence';
-
-type MatchInfo = {
-  id: string;
-  user1_id: string;
-  user2_id: string;
-  status: string;
-  other_user: {
-    id: string;
-    full_name: string | null;
-    profile_photo_url: string | null;
-  };
-};
-
-function MessageBubble({
-  content,
-  isMine,
-  status,
-  timestamp,
-  messageType,
-  mediaUrl,
-}: {
-  content: string;
-  isMine: boolean;
-  status: 'sent' | 'delivered' | 'read';
-  timestamp: string;
-  messageType: 'text' | 'image' | 'voice';
-  mediaUrl?: string;
-}) {
-  const time = new Date(timestamp).toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-  });
-
-  return (
-    <div className={`flex ${isMine ? 'justify-end' : 'justify-start'} mb-3`}>
-      <div className={`max-w-[75%] ${isMine ? 'items-end' : 'items-start'} flex flex-col`}>
-        {/* Image Message */}
-        {messageType === 'image' && mediaUrl && (
-          <div className={`rounded-2xl overflow-hidden mb-1 ${isMine ? 'bg-emerald-600' : 'bg-slate-700'}`}>
-            <img src={mediaUrl} alt="Shared" className="max-w-full" />
-          </div>
-        )}
-
-        {/* Voice Message (Placeholder) */}
-        {messageType === 'voice' && (
-          <div
-            className={`rounded-2xl px-4 py-3 ${
-              isMine ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-100'
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-sm">Voice message</span>
-            </div>
-          </div>
-        )}
-
-        {/* Text Message */}
-        {messageType === 'text' && (
-          <div
-            className={`rounded-2xl px-4 py-3 ${
-              isMine ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-100'
-            }`}
-          >
-            <p className="text-sm leading-relaxed break-words">{content}</p>
-          </div>
-        )}
-
-        {/* Metadata */}
-        <div className="flex items-center gap-1 mt-1 px-2">
-          <span className="text-xs text-slate-400">{time}</span>
-          {isMine && (
-            <span className="text-xs text-slate-400">
-              {status === 'sent' && (
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              )}
-              {status === 'delivered' && (
-                <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              )}
-              {status === 'read' && (
-                <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              )}
-            </span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
+import { useAuth } from '../lib/auth';
+import { supabase } from '../lib/supabase';
+import type { Profile } from '../types';
 
 export default function ChatPage() {
   const { matchId } = useParams<{ matchId: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
-
-  const [matchInfo, setMatchInfo] = useState<MatchInfo | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { messages, loading, error, sendMessage, markAsRead } = useMessages(matchId);
   const [inputValue, setInputValue] = useState('');
-  const [sending, setSending] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-
+  const [otherUser, setOtherUser] = useState<Profile | null>(null);
+  const [matchStatus, setMatchStatus] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, sendMessage, markAsRead } = useMessages(matchId);
-  const { otherUserTyping, setTyping } = usePresence(matchId, user?.id);
-
-  // Fetch match info
+  // Fetch match and other user details
   useEffect(() => {
-    const fetchMatchInfo = async () => {
+    const fetchMatchDetails = async () => {
       if (!matchId || !user?.id) return;
-
-      setLoading(true);
-      setError(null);
 
       const { data: matchData, error: matchError } = await supabase
         .from('matches')
@@ -152,153 +32,156 @@ export default function ChatPage() {
         .eq('id', matchId)
         .single();
 
-      if (matchError) {
-        setError(matchError.message);
-        setLoading(false);
+      if (matchError || !matchData) {
+        navigate('/matches');
         return;
       }
 
-      const otherUserId = matchData.user1_id === user.id ? matchData.user2_id : matchData.user1_id;
+      setMatchStatus(matchData.status);
+
+      // Check if match is active
+      if (matchData.status !== 'active') {
+        return;
+      }
+
+      const otherUserId = matchData.user1_id === user.id 
+        ? matchData.user2_id 
+        : matchData.user1_id;
 
       const { data: profileData } = await supabase
         .from('profiles')
-        .select('id, full_name, profile_photo_url')
+        .select('*')
         .eq('id', otherUserId)
         .single();
 
-      setMatchInfo({
-        ...matchData,
-        other_user: profileData || { id: otherUserId, full_name: 'Unknown', profile_photo_url: null },
-      });
-
-      setLoading(false);
+      if (profileData) {
+        setOtherUser(profileData as Profile);
+      }
     };
 
-    fetchMatchInfo();
-  }, [matchId, user]);
+    fetchMatchDetails();
+  }, [matchId, user, navigate]);
 
-  // Scroll to bottom on new messages
+  // Mark messages as read when viewed
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  // Mark messages as read
-  useEffect(() => {
-    if (!user?.id) return;
-
-    messages.forEach((msg) => {
-      if (msg.sender_id !== user.id && msg.status !== 'read') {
+    messages.forEach(msg => {
+      if (msg.sender_id !== user?.id && msg.status !== 'read') {
         markAsRead(msg.id);
       }
     });
   }, [messages, user, markAsRead]);
 
-  // Handle typing indicator
-  const handleInputChange = useCallback(
-    (value: string) => {
-      setInputValue(value);
-
-      // Set typing when user starts typing
-      if (value.length > 0 && !otherUserTyping) {
-        setTyping(true);
-      } else if (value.length === 0) {
-        setTyping(false);
-      }
-    },
-    [setTyping, otherUserTyping]
-  );
-
-  // Clear typing on blur
+  // Scroll to bottom when new messages arrive
   useEffect(() => {
-    if (inputValue.length === 0) {
-      setTyping(false);
-    }
-  }, [inputValue, setTyping]);
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Focus input on mount
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const handleSend = async () => {
-    if (!inputValue.trim() || sending) return;
+    if (!inputValue.trim() || !matchId) return;
 
-    setSending(true);
-    setTyping(false);
-
-    const { error: sendError } = await sendMessage(inputValue.trim());
-
-    if (sendError) {
-      setError(sendError);
-    } else {
+    const result = await sendMessage(inputValue.trim());
+    
+    if (!result.error) {
       setInputValue('');
     }
-
-    setSending(false);
-    inputRef.current?.focus();
   };
 
-  const handleImageUpload = async (file: File) => {
-    if (!matchId) return;
-
-    setSending(true);
-    setError(null);
-
-    // Upload to Supabase Storage
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${matchId}/${Date.now()}.${fileExt}`;
-
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('chat-media')
-      .upload(fileName, file);
-
-    if (uploadError) {
-      setError(uploadError.message);
-      setSending(false);
-      return;
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
     }
-
-    // Get public URL
-    const { data: urlData } = supabase.storage.from('chat-media').getPublicUrl(uploadData.path);
-
-    // Send message with image URL
-    await sendMessage('[Image]', 'image', urlData.publicUrl);
-
-    setSending(false);
   };
 
-  const handleBlock = async () => {
-    if (!matchId || !window.confirm('Are you sure you want to block this user?')) return;
+  const formatTime = (dateString: string) => {
+    return new Date(dateString).toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  };
 
-    const { error: blockError } = await supabase
-      .from('matches')
-      .update({ status: 'blocked' })
-      .eq('id', matchId);
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
 
-    if (blockError) {
-      setError(blockError.message);
+    if (date.toDateString() === today.toDateString()) {
+      return 'Today';
+    } else if (date.toDateString() === yesterday.toDateString()) {
+      return 'Yesterday';
     } else {
-      navigate('/matches');
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+      });
     }
   };
 
-  if (loading) {
+  // Group messages by date
+  const groupedMessages = messages.reduce((groups, msg) => {
+    const date = new Date(msg.created_at).toDateString();
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(msg);
+    return groups;
+  }, {} as Record<string, typeof messages>);
+
+  if (loading && messages.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mx-auto" />
-          <p className="text-slate-400 mt-4">Loading chat...</p>
+          <p className="text-slate-400 mt-4">Loading conversation...</p>
         </div>
       </div>
     );
   }
 
-  if (!matchInfo) {
+  // Show pending state if match is not active
+  if (matchStatus && matchStatus !== 'active') {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="text-center">
-          <p className="text-rose-200">Match not found</p>
-          <button
-            onClick={() => navigate('/matches')}
-            className="mt-4 rounded-2xl px-6 py-3 bg-slate-700 text-slate-200 hover:bg-slate-600"
-          >
-            Back to Matches
-          </button>
+      <div className="min-h-screen flex flex-col bg-slate-950">
+        {/* Header */}
+        <header className="px-4 py-4 bg-slate-900/90 backdrop-blur-lg border-b border-white/10">
+          <div className="max-w-md mx-auto flex items-center gap-3">
+            <button
+              onClick={() => navigate('/matches')}
+              className="p-2 -ml-2 rounded-full hover:bg-white/10 transition"
+            >
+              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <h1 className="text-white font-semibold">Chat</h1>
+          </div>
+        </header>
+
+        {/* Pending State */}
+        <div className="flex-1 flex items-center justify-center p-4">
+          <div className="text-center max-w-sm">
+            <div className="w-20 h-20 mx-auto rounded-full bg-amber-500/20 flex items-center justify-center mb-4">
+              <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h2 className="text-white text-xl font-semibold mb-2">Chat Locked</h2>
+            <p className="text-slate-400 text-sm mb-4">
+              This match is still awaiting wali approval. You'll be able to chat once both walis approve.
+            </p>
+            <button
+              onClick={() => navigate('/matches')}
+              className="px-6 py-3 bg-emerald-500 text-slate-950 rounded-xl font-medium hover:bg-emerald-400 transition"
+            >
+              Back to Matches
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -307,192 +190,196 @@ export default function ChatPage() {
   return (
     <div className="h-screen flex flex-col bg-slate-950">
       {/* Header */}
-      <div className="shrink-0 bg-slate-900/80 backdrop-blur border-b border-slate-800 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 flex-1 min-w-0">
+      <header className="px-4 py-4 bg-slate-900/90 backdrop-blur-lg border-b border-white/10 flex-shrink-0">
+        <div className="max-w-md mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => navigate('/matches')}
-              className="shrink-0 w-8 h-8 rounded-full hover:bg-slate-800 flex items-center justify-center transition"
+              className="p-2 -ml-2 rounded-full hover:bg-white/10 transition"
             >
-              <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-
-            <div className="w-10 h-10 rounded-full bg-slate-800 overflow-hidden shrink-0">
-              {matchInfo.other_user.profile_photo_url ? (
-                <img
-                  src={matchInfo.other_user.profile_photo_url}
-                  alt={matchInfo.other_user.full_name || 'User'}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-              )}
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <h2 className="text-white font-semibold truncate">
-                {matchInfo.other_user.full_name || 'Unknown User'}
-              </h2>
-              {otherUserTyping && <p className="text-xs text-emerald-400">typing...</p>}
-            </div>
-          </div>
-
-          <div className="relative">
-            <button
-              onClick={() => setShowMenu(!showMenu)}
-              className="w-8 h-8 rounded-full hover:bg-slate-800 flex items-center justify-center transition"
-            >
-              <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-              </svg>
-            </button>
-
-            {showMenu && (
-              <div className="absolute right-0 mt-2 w-48 rounded-2xl bg-slate-800 ring-1 ring-slate-700 shadow-xl py-2 z-50">
-                <button
-                  onClick={() => {
-                    setShowMenu(false);
-                    alert('Report functionality coming soon');
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm text-slate-200 hover:bg-slate-700"
-                >
-                  Report User
-                </button>
-                <button
-                  onClick={() => {
-                    setShowMenu(false);
-                    handleBlock();
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm text-rose-200 hover:bg-slate-700"
-                >
-                  Block User
-                </button>
+            
+            {/* User Info */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-slate-800 ring-2 ring-emerald-500/30 overflow-hidden">
+                {otherUser?.profile_photo_url ? (
+                  <img
+                    src={otherUser.profile_photo_url}
+                    alt={otherUser.full_name || 'Profile'}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                )}
               </div>
-            )}
+              <div>
+                <h1 className="text-white font-semibold text-sm">
+                  {otherUser?.full_name || 'Anonymous'}
+                </h1>
+                <p className="text-emerald-400 text-xs flex items-center gap-1">
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                  Active now
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Error Message */}
-      {error && (
-        <div className="shrink-0 bg-rose-500/10 border-b border-rose-500/30 px-4 py-2">
-          <p className="text-rose-200 text-sm">{error}</p>
+          {/* Options */}
+          <button className="p-2 rounded-full hover:bg-white/10 transition">
+            <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </button>
         </div>
-      )}
+      </header>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-6">
-        {messages.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 ring-1 ring-white/10 flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
+      <div className="flex-1 overflow-y-auto px-4 py-4">
+        <div className="max-w-md mx-auto space-y-6">
+          {error && (
+            <div className="rounded-xl bg-rose-500/10 ring-1 ring-rose-500/30 p-3">
+              <p className="text-rose-200 text-sm text-center">{error}</p>
             </div>
-            <p className="text-slate-400 text-sm">No messages yet. Start the conversation!</p>
-          </div>
-        ) : (
-          <>
-            {messages.map((msg) => (
-              <MessageBubble
-                key={msg.id}
-                content={msg.content}
-                isMine={msg.sender_id === user?.id}
-                status={msg.status}
-                timestamp={msg.created_at}
-                messageType={msg.message_type}
-                mediaUrl={msg.media_url}
-              />
-            ))}
-            <div ref={messagesEndRef} />
-          </>
-        )}
+          )}
+
+          {messages.length === 0 && !loading && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 flex items-center justify-center mb-4">
+                <svg className="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <p className="text-slate-400 text-sm">
+                Start the conversation with {otherUser?.full_name?.split(' ')[0] || 'your match'}
+              </p>
+            </div>
+          )}
+
+          {Object.entries(groupedMessages).map(([date, dateMessages]) => (
+            <div key={date} className="space-y-3">
+              {/* Date Divider */}
+              <div className="flex items-center justify-center">
+                <span className="px-3 py-1 bg-slate-800 text-slate-400 text-xs rounded-full">
+                  {formatDate(dateMessages[0].created_at)}
+                </span>
+              </div>
+
+              {/* Messages */}
+              {dateMessages.map((msg, index) => {
+                const isMine = msg.sender_id === user?.id;
+                const showAvatar = !isMine && (
+                  index === 0 || 
+                  dateMessages[index - 1].sender_id !== msg.sender_id
+                );
+
+                return (
+                  <div
+                    key={msg.id}
+                    className={`flex ${isMine ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`flex items-end gap-2 max-w-[80%] ${isMine ? 'flex-row-reverse' : ''}`}>
+                      {/* Avatar (only show for first message in group) */}
+                      {!isMine && showAvatar && (
+                        <div className="w-8 h-8 rounded-full bg-slate-800 flex-shrink-0 overflow-hidden">
+                          {otherUser?.profile_photo_url ? (
+                            <img
+                              src={otherUser.profile_photo_url}
+                              alt=""
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              </svg>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {!isMine && !showAvatar && <div className="w-8" />}
+
+                      {/* Message Bubble */}
+                      <div
+                        className={`px-4 py-3 rounded-2xl ${
+                          isMine
+                            ? 'bg-emerald-500 text-slate-950 rounded-br-md'
+                            : 'bg-slate-800 text-slate-100 rounded-bl-md'
+                        }`}
+                      >
+                        <p className="text-sm leading-relaxed">{msg.content}</p>
+                        <div className={`flex items-center gap-1 mt-1 ${isMine ? 'justify-end' : ''}`}>
+                          <span className={`text-xs ${isMine ? 'text-emerald-900/70' : 'text-slate-500'}`}>
+                            {formatTime(msg.created_at)}
+                          </span>
+                          {isMine && (
+                            <span className="text-emerald-900/70">
+                              {msg.status === 'read' ? (
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              ) : msg.status === 'delivered' ? (
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              ) : (
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
       {/* Input */}
-      <div className="shrink-0 bg-slate-900/80 backdrop-blur border-t border-slate-800 px-4 py-3">
-        <div className="flex items-end gap-2">
-          {/* Image Upload */}
-          <label className="shrink-0 w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center cursor-pointer transition">
+      <div className="px-4 py-4 bg-slate-900/90 backdrop-blur-lg border-t border-white/10 flex-shrink-0">
+        <div className="max-w-md mx-auto flex items-center gap-3">
+          <button className="p-3 rounded-full bg-slate-800 text-slate-400 hover:bg-slate-700 transition">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+          
+          <div className="flex-1 relative">
             <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (file) handleImageUpload(file);
-              }}
+              ref={inputRef}
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Type a message..."
+              className="w-full px-4 py-3 bg-slate-800 text-white placeholder-slate-500 rounded-full border border-slate-700 focus:ring-2 focus:ring-emerald-500 focus:border-transparent pr-12"
             />
-            <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-          </label>
-
-          {/* Voice Message (Placeholder) */}
-          <button className="shrink-0 w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition">
-            <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-              />
-            </svg>
-          </button>
-
-          {/* Text Input */}
-          <textarea
-            ref={inputRef}
-            value={inputValue}
-            onChange={(e) => handleInputChange(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSend();
-              }
-            }}
-            placeholder="Type a message..."
-            rows={1}
-            className="flex-1 bg-slate-800 text-white rounded-2xl px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500/50 placeholder:text-slate-400"
-          />
-
-          {/* Send Button */}
-          <button
-            onClick={handleSend}
-            disabled={sending || !inputValue.trim()}
-            className="shrink-0 w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition"
-          >
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-              />
-            </svg>
-          </button>
+            <button
+              onClick={handleSend}
+              disabled={!inputValue.trim()}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-emerald-500 text-slate-950 rounded-full disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-400 transition"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+          </div>
         </div>
+        <p className="text-center text-slate-600 text-xs mt-2">
+          Messages are monitored for safety
+        </p>
       </div>
     </div>
   );

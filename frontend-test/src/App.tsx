@@ -13,8 +13,12 @@ import Premium from './pages/Premium';
 import SubscriptionSuccess from './pages/SubscriptionSuccess';
 import Subscription from './pages/Subscription';
 
-// Phase 3 Routes (Stitch Design)
+// Phase 2 Routes (Core Matching & Communication)
 import SwipePage from './pages/SwipePage';
+import MatchesPage from './pages/MatchesPage';
+import ChatPage from './pages/ChatPage';
+
+// Phase 3 Routes (Stitch Design)
 import MatchesPageStitch from './pages/MatchesPageStitch';
 import ChatPageStitch from './pages/ChatPageStitch';
 import FamilyPanel from './pages/FamilyPanel';
@@ -108,7 +112,7 @@ function App() {
             }
           />
 
-          {/* Phase 3 Routes */}
+          {/* Phase 2 Routes - Core Matching & Communication */}
           <Route
             path="/swipe"
             element={
@@ -122,13 +126,32 @@ function App() {
             path="/matches"
             element={
               <ProtectedRoute>
-                <MatchesPageStitch />
+                <MatchesPage />
               </ProtectedRoute>
             }
           />
 
           <Route
             path="/chat/:matchId"
+            element={
+              <ProtectedRoute>
+                <ChatPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Phase 3 Routes - Stitch Design (Alternative UI) */}
+          <Route
+            path="/matches-stitch"
+            element={
+              <ProtectedRoute>
+                <MatchesPageStitch />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/chat-stitch/:matchId"
             element={
               <ProtectedRoute>
                 <ChatPageStitch />
