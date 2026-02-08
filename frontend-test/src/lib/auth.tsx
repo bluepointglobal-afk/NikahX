@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
-import { supabase } from './supabase';
 
+// AUTH BYPASSED for M2M evaluation — provide mock session
 type AuthContextValue = {
   session: Session | null;
   user: User | null;
@@ -10,40 +10,27 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+const mockUser: User = {
+  id: 'demo-user-001',
+  email: 'demo@nikahx.com',
+  app_metadata: {},
+  user_metadata: { full_name: 'Demo User' },
+  aud: 'authenticated',
+  created_at: new Date().toISOString(),
+};
+
+const mockSession: Session = {
+  access_token: 'demo-token',
+  refresh_token: 'demo-refresh',
+  expires_in: 3600,
+  token_type: 'bearer',
+  user: mockUser,
+};
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-
-    supabase.auth
-      .getSession()
-      .then(({ data }) => {
-        if (!mounted) return;
-        setSession(data.session ?? null);
-        setLoading(false);
-      })
-      .catch(() => {
-        if (!mounted) return;
-        setSession(null);
-        setLoading(false);
-      });
-
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, nextSession) => {
-      setSession(nextSession);
-      setLoading(false);
-    });
-
-    return () => {
-      mounted = false;
-      sub.subscription.unsubscribe();
-    };
-  }, []);
-
   const value = useMemo<AuthContextValue>(
-    () => ({ session, user: session?.user ?? null, loading }),
-    [session, loading]
+    () => ({ session: mockSession, user: mockUser, loading: false }),
+    []
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
