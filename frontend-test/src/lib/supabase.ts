@@ -127,9 +127,10 @@ export const supabase = {
   auth: {
     getSession: async () => ({ data: { session: { user: DEMO_USER, access_token: 'demo', refresh_token: 'demo', expires_in: 3600, token_type: 'bearer' } }, error: null }),
     getUser: async () => ({ data: { user: DEMO_USER }, error: null }),
-    signInWithPassword: async () => ({ data: { user: DEMO_USER, session: {} }, error: null }),
-    signUp: async () => ({ data: { user: DEMO_USER, session: {} }, error: null }),
+    signInWithPassword: async (...args: any[]) => ({ data: { user: DEMO_USER, session: {} }, error: null }),
+    signUp: async (...args: any[]) => ({ data: { user: DEMO_USER, session: {} }, error: null }),
     signOut: async () => ({ error: null }),
+    resend: async (...args: any[]) => ({ data: {}, error: null }),
     onAuthStateChange: (cb: any) => {
       setTimeout(() => cb('SIGNED_IN', { user: DEMO_USER }), 100);
       return { data: { subscription: { unsubscribe: () => {} } } };
@@ -138,10 +139,18 @@ export const supabase = {
     resetPasswordForEmail: async () => ({ data: {}, error: null }),
   },
   from: (table: string) => mockQuery(table),
-  channel: () => ({
-    on: () => ({ subscribe: () => ({ unsubscribe: () => {} }) }),
-    subscribe: () => ({ unsubscribe: () => {} }),
-  }),
+  channel: (...args: any[]) => {
+    const ch: any = {
+      on: (...a: any[]) => ch,
+      subscribe: (cb?: any) => { if (cb) cb('SUBSCRIBED'); return ch; },
+      unsubscribe: () => {},
+      track: (...a: any[]) => Promise.resolve(),
+      presenceState: () => ({}),
+      send: (...a: any[]) => Promise.resolve(),
+    };
+    return ch;
+  },
+  removeChannel: (...args: any[]) => Promise.resolve(),
   storage: {
     from: () => ({
       upload: async () => ({ data: { path: 'demo/photo.jpg' }, error: null }),
@@ -150,8 +159,8 @@ export const supabase = {
       remove: async () => ({ data: [], error: null }),
     }),
   },
-  rpc: async (fn: string, params?: any) => ({ data: [], error: null }),
+  rpc: async (...args: any[]) => ({ data: [], error: null }),
   functions: {
-    invoke: async () => ({ data: {}, error: null }),
+    invoke: async (...args: any[]) => ({ data: {}, error: null }),
   },
 };
