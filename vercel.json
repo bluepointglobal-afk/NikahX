@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "buildCommand": "cd frontend-test && npm install && npm run build",
   "outputDirectory": "frontend-test/dist",
   "routes": [
