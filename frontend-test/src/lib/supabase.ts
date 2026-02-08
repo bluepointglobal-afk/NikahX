@@ -70,7 +70,7 @@ function mockQuery(tableName: string) {
 
   const chain: any = {
     _filters: [] as any[],
-    select: () => chain,
+    select: (...args: any[]) => chain,
     insert: (rows: any) => ({ data: Array.isArray(rows) ? rows : [rows], error: null }),
     update: (vals: any) => ({ data: vals, error: null }),
     upsert: (rows: any) => ({ data: Array.isArray(rows) ? rows : [rows], error: null }),
@@ -104,11 +104,11 @@ function mockQuery(tableName: string) {
     },
   };
 
-  // Make it thenable
+  // Make it thenable — spread count at top level for Supabase compat
   Object.defineProperty(chain, 'then', {
     value: (resolve: any, reject?: any) => {
       const filtered = applyFilters(dataset, chain._filters);
-      return Promise.resolve({ data: filtered, error: null, count: filtered.length }).then(resolve, reject);
+      return Promise.resolve({ data: filtered, error: null, count: filtered.length, status: 200, statusText: 'OK' }).then(resolve, reject);
     },
   });
 
@@ -159,7 +159,7 @@ export const supabase = {
       remove: async () => ({ data: [], error: null }),
     }),
   },
-  rpc: async (...args: any[]) => ({ data: [], error: null }),
+  rpc: async (...args: any[]): Promise<any> => ({ data: [], error: null, count: 0 }),
   functions: {
     invoke: async (...args: any[]) => ({ data: {}, error: null }),
   },

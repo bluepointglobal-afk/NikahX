@@ -178,7 +178,7 @@ export function useMatchRequests(
 
       if (rpcError) throw rpcError;
 
-      const result = data as {
+      const result = data as unknown as {
         success: boolean;
         is_mutual: boolean;
         match_id: string | null;
