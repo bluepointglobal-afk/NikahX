@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "buildCommand": "cd frontend-test && npm install && npm run build",
+  "buildCommand": "cd frontend-test && npm install --legacy-peer-deps && npm run build",
   "outputDirectory": "frontend-test/dist",
   "routes": [
     {
