@@ -1,24 +1,23 @@
+
+!.env.example
+# Editor
+# Env
+# Local Netlify folder
+# Node
 # Supabase
+.DS_Store
+.env
+.env*.local
+.env.*
+.env.local
+.idea
+.netlify
+.next/
+.npm
+.vercel
+.vscode
 /supabase/.branches
 /supabase/.temp
 /supabase/functions/**/.env
-
-# Node
-node_modules/
-.npm
-.DS_Store
-
-# Env
-.env
-.env.*
-!.env.example
-
-# Editor
-.vscode
-.idea
-.vercel
-.env*.local
-
-# Local Netlify folder
-.netlify
+dist/
 node_modules/
